@@ -1,14 +1,10 @@
-package com.elionet.ecommerceappmvvm
+package com.elionet.ecommerceappmvvm.presentation.screens.auth.login.components
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,10 +21,8 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,29 +32,13 @@ import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.elionet.ecommerceappmvvm.ui.theme.KotlinEcommerceMVVMTheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
-        setContent {
-            KotlinEcommerceMVVMTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginContent(
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
-    }
-}
+import com.elionet.ecommerceappmvvm.R
+import com.elionet.ecommerceappmvvm.ui.theme.AccentColor
 
 @Composable
-fun LoginContent(modifier: Modifier = Modifier.fillMaxSize()){
+fun LoginContent(paddingValues: PaddingValues, modifier: Modifier = Modifier.fillMaxSize()){
     Box(modifier = Modifier) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -109,7 +87,7 @@ fun LoginContent(modifier: Modifier = Modifier.fillMaxSize()){
                 )
             ) {
                 Column(
-                    modifier = Modifier.padding(20.dp)
+                    modifier = Modifier.padding(top = 30.dp, end = 30.dp, start = 30.dp)
                 )  {
                     Text(
                         modifier = Modifier.padding(20.dp),
@@ -118,7 +96,7 @@ fun LoginContent(modifier: Modifier = Modifier.fillMaxSize()){
                         fontSize = 20.sp,
                         color = Color.Black
                     )
-                    TextField(
+                    OutlinedTextField(
                         modifier = Modifier
                             .fillMaxWidth(),
                         value = "",
@@ -128,16 +106,18 @@ fun LoginContent(modifier: Modifier = Modifier.fillMaxSize()){
                             Icon(
                                 imageVector = Icons.Default.Email,
                                 contentDescription = "Correo electrónico",
-                                tint = Color.Cyan
+                                tint = AccentColor
                             )
-                        },
+                        }
+                        /*
+                        ,
                         colors = TextFieldDefaults.colors( // La función se llama solo 'colors'
                             focusedContainerColor = Color.White,
                             unfocusedContainerColor = Color.White
                             // O usa containerColor, dependiendo de la variante de TextField que uses
-                        )
+                        )*/
                     )
-                    TextField(
+                    OutlinedTextField(
                         modifier = Modifier
                             .fillMaxWidth(),
                         value = "",
@@ -147,20 +127,22 @@ fun LoginContent(modifier: Modifier = Modifier.fillMaxSize()){
                             Icon(
                                 imageVector = Icons.Default.Lock,
                                 contentDescription = "Lock",
-                                tint = Color.Cyan
+                                tint = AccentColor
                             )
-                        },
+                        }
+                        /*,
                         colors = TextFieldDefaults.colors( // La función se llama solo 'colors'
                             focusedContainerColor = Color.White,
                             unfocusedContainerColor = Color.White
                             // O usa containerColor, dependiendo de la variante de TextField que uses
-                        )
+                        )*/
                     )
                     Button(
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(top = 10.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Cyan, // El color de fondo del botón
+                            containerColor = AccentColor, // El color de fondo del botón
                             contentColor = Color.Black    // El color del texto o contenido (LOGIN)
                         ),
                         onClick = {}) {
@@ -172,7 +154,7 @@ fun LoginContent(modifier: Modifier = Modifier.fillMaxSize()){
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 10.dp),
+                            .padding(top = 25.dp, bottom = 10.dp),
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
@@ -182,27 +164,11 @@ fun LoginContent(modifier: Modifier = Modifier.fillMaxSize()){
                             modifier = Modifier.padding(start = 4.dp),
                             text = "REGISTRATE",
                             fontWeight = FontWeight.Bold,
-                            color = Color.Black
+                            color = AccentColor
                         )
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun GreetingPreview() {
-    KotlinEcommerceMVVMTheme {
-        Greeting("Android")
     }
 }
