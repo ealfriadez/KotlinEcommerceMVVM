@@ -32,9 +32,12 @@ import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.elionet.ecommerceappmvvm.R
+import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
+import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
 import com.elionet.ecommerceappmvvm.ui.theme.AccentColor
 
 @Composable
@@ -83,7 +86,7 @@ fun LoginContent(paddingValues: PaddingValues, modifier: Modifier = Modifier.fil
                     topEnd = 40.dp,
                     topStart = 40.dp
                 ), colors = CardDefaults.cardColors(
-                    containerColor = Color.White // Este es el parámetro correcto para el color de fondo
+                    containerColor = Color.White.copy(alpha = 0.89f)
                 )
             ) {
                 Column(
@@ -96,65 +99,35 @@ fun LoginContent(paddingValues: PaddingValues, modifier: Modifier = Modifier.fil
                         fontSize = 20.sp,
                         color = Color.Black
                     )
-                    OutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                    DefaultTextField(
+                        modifier = Modifier.fillMaxWidth(),
                         value = "",
                         onValueChange = {},
-                        label = { Text(text = "Correo electrónico") },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Email,
-                                contentDescription = "Correo electrónico",
-                                tint = AccentColor
-                            )
-                        }
-                        /*
-                        ,
-                        colors = TextFieldDefaults.colors( // La función se llama solo 'colors'
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White
-                            // O usa containerColor, dependiendo de la variante de TextField que uses
-                        )*/
+                        label = "Correo Electrónico",
+                        icon = Icons.Default.Email,
+                        keyboardType = KeyboardType.Email
                     )
-                    OutlinedTextField(
-                        modifier = Modifier
-                            .fillMaxWidth(),
+                    DefaultTextField(
+                        modifier = Modifier.fillMaxWidth(),
                         value = "",
                         onValueChange = {},
-                        label = { Text(text = "Contraseña") },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Lock,
-                                contentDescription = "Lock",
-                                tint = AccentColor
-                            )
-                        }
-                        /*,
-                        colors = TextFieldDefaults.colors( // La función se llama solo 'colors'
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White
-                            // O usa containerColor, dependiendo de la variante de TextField que uses
-                        )*/
+                        label = "Contraseña",
+                        icon = Icons.Default.Lock,
+                        keyboardType = KeyboardType.Password
                     )
-                    Button(
+                    DefaultButton(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .height(50.dp)
                             .padding(top = 10.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = AccentColor, // El color de fondo del botón
-                            contentColor = Color.Black    // El color del texto o contenido (LOGIN)
-                        ),
-                        onClick = {}) {
-                        Text(
-                            text = "LOGIN",
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
+                        onClick = {},
+                        text = "INICIAR SESIÓN"
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 25.dp, bottom = 10.dp),
+                            .padding(top = 15.dp, bottom = 20.dp),
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
