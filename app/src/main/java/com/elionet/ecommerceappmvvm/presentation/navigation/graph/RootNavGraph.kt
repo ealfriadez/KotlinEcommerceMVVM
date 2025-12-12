@@ -1,18 +1,17 @@
 package com.elionet.ecommerceappmvvm.presentation.navigation.graph
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 
-@Composable}
-
+@Composable
 fun RootNavGraph(navController: NavHostController){
     NavHost(
-        navController = navControllerv,
+        navController = navController,
         route = Graph.ROOT,
         startDestination = Graph.AUTH
     ){
-
+        AuthNavGraph(navController = navController)
     }
 }
