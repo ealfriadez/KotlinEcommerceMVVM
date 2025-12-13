@@ -10,6 +10,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
@@ -24,7 +26,9 @@ fun DefaultTopBar(
         title = {
             Text(
                 text = "Registro",
-                fontSize = 19.sp
+                fontSize = 19.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
             )
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -44,3 +48,4 @@ fun DefaultTopBar(
 
     )
 }
+

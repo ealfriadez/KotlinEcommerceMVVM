@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -32,15 +34,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.R
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginViewModel
 import com.elionet.ecommerceappmvvm.ui.theme.AccentColor
 
 @Composable
-fun LoginContent(navController: NavHostController, paddingValues: PaddingValues, modifier: Modifier = Modifier.fillMaxSize()){
+fun LoginContent(
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    modifier: Modifier = Modifier.fillMaxSize(),
+    vm: LoginViewModel = hiltViewModel()
+){
+
     Box(modifier = Modifier) {
         Image(
             modifier = Modifier.fillMaxSize(),
@@ -91,7 +101,9 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                 )
             ) {
                 Column(
-                    modifier = Modifier.padding(top = 30.dp, end = 30.dp, start = 30.dp)
+                    modifier = Modifier
+                        .padding(top = 30.dp, end = 30.dp, start = 30.dp)
+                        .verticalScroll(rememberScrollState())
                 )  {
                     Text(
                         modifier = Modifier.padding(20.dp),
@@ -102,16 +114,20 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = vm.email,
+                        onValueChange = { text ->
+                            vm.email = text
+                        },
                         label = "Correo Electrónico",
                         icon = Icons.Default.Email,
                         keyboardType = KeyboardType.Email
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = vm.password,
+                        onValueChange = { text ->
+                            vm.password = text
+                        },
                         label = "Contraseña",
                         icon = Icons.Default.Lock,
                         keyboardType = KeyboardType.Password
