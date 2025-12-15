@@ -1,5 +1,6 @@
 package com.elionet.ecommerceappmvvm.presentation.screens.auth.register.components
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,24 +22,41 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.elionet.ecommerceappmvvm.R
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
+import com.elionet.ecommerceappmvvm.presentation.screens.auth.register.RegisterViewModel
 
 @Composable
-fun RegisterContent(paddingValues: PaddingValues){
+fun RegisterContent(
+    paddingValues: PaddingValues,
+    vm: RegisterViewModel = hiltViewModel()
+){
+
+    val state = vm.state
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = vm.errorMessage) {
+        if (vm.errorMessage != "") {
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+        }
+    }
+
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
         .fillMaxSize()
@@ -112,24 +130,30 @@ fun RegisterContent(paddingValues: PaddingValues){
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.name,
+                        onValueChange = { text ->
+                            vm.onNameInput(text)
+                        },
                         label = "Nombres",
                         icon = Icons.Default.Person
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.lastName,
+                        onValueChange = { text ->
+                            vm.onLastNameInput(text)
+                        },
                         label = "Apellidos",
                         icon = Icons.Outlined.Person
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.email,
+                        onValueChange = { text ->
+                            vm.onEmailInput(text)
+                        },
                         label = "Correo electrónico",
                         icon = Icons.Default.Email,
                         keyboardType = KeyboardType.Email
@@ -137,8 +161,10 @@ fun RegisterContent(paddingValues: PaddingValues){
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.phone,
+                        onValueChange = { text ->
+                            vm.onPhoneInput(text)
+                        },
                         label = "Teléfono",
                         icon = Icons.Default.Phone,
                         keyboardType = KeyboardType.Phone
@@ -146,20 +172,26 @@ fun RegisterContent(paddingValues: PaddingValues){
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.password,
+                        onValueChange = { text ->
+                            vm.onPasswordInput(text)
+                        },
                         label = "Contraseña",
                         icon = Icons.Default.Lock,
-                        keyboardType = KeyboardType.Password
+                        keyboardType = KeyboardType.Password,
+                        hideText = true
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChange = {},
+                        value = state.confirmPassword,
+                        onValueChange = { text ->
+                            vm.onConfirmPasswordInput(text)
+                        },
                         label = "Confirmar contraseña",
                         icon = Icons.Default.Lock,
-                        keyboardType = KeyboardType.Password
+                        keyboardType = KeyboardType.Password,
+                        hideText = true
                     )
 
                     Spacer(modifier = Modifier.height(15.dp))
@@ -170,7 +202,7 @@ fun RegisterContent(paddingValues: PaddingValues){
                             .height(50.dp),
                         text = "CONFIRMAR",
                         onClick = {
-
+                            vm.validateForm()
                         }
                     )
                 }

@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import com.elionet.ecommerceappmvvm.ui.theme.AccentColor
 
 @Composable
@@ -23,7 +25,8 @@ fun DefaultTextField(
     onValueChange: (value: String) -> Unit,
     label: String,
     icon: ImageVector,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardType: KeyboardType = KeyboardType.Text,
+    hideText: Boolean = false
 ){
     OutlinedTextField(
         modifier = modifier,
@@ -50,6 +53,8 @@ fun DefaultTextField(
             focusedLabelColor = Color.Black,
             unfocusedLabelColor = Color.Gray
         ),
-        keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
+        keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+        visualTransformation = if (hideText) PasswordVisualTransformation() else VisualTransformation.None
+
     )
 }
