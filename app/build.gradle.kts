@@ -55,9 +55,9 @@ dependencies {
     implementation(libs.androidx.compose.material3)
 
     // Retrofit 3.x with Gson converter (replace with the latest version if needed)
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.google.code.gson:gson:2.9.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.gson)
 
     //NAVIGATION COMPOSE
     implementation(libs.androidx.navigation.compose)

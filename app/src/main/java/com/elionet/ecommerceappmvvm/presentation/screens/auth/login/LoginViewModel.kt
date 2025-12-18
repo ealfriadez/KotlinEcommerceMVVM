@@ -28,14 +28,20 @@ class LoginViewModel @Inject constructor(): ViewModel() {
         state = state.copy(password = password)
     }
 
-    fun validateForm() = viewModelScope.launch {
+    fun login() = viewModelScope.launch {
+
+    }
+
+    fun validateForm(): Boolean {
+
         if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
             errorMessage = "El email es invalido"
-        }else if (state.password.length < 6) {
-            errorMessage = "La contraseña debe tener al menos 6 caracteres"
+            return false
         }
-
-        delay(3000)
-        errorMessage = ""
+        else if (state.password.length < 6) {
+            errorMessage = "La contraseña debe tener al menos 6 caracteres"
+            return false
+        }
+        return true
     }
 }
