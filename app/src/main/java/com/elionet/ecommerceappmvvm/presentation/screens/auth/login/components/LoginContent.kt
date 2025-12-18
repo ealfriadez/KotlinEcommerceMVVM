@@ -150,7 +150,7 @@ fun LoginContent(
                             .fillMaxWidth()
                             .height(50.dp)
                             .padding(top = 10.dp),
-                        onClick = { vm.validateForm() },
+                        onClick = { vm.login() },
                         text = "INICIAR SESIÓN"
                     )
                     Spacer(modifier = Modifier.height(10.dp))
