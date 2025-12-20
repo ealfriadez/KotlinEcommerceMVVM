@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.data.service
+package com.elionet.ecommerceappmvvm.data.dataSource.remote.service
 
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.model.LoginRequest

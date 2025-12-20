@@ -1,7 +1,7 @@
 package com.elionet.ecommerceappmvvm.di
 
 import com.elionet.ecommerceappmvvm.core.Config
-import com.elionet.ecommerceappmvvm.data.service.AuthService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
