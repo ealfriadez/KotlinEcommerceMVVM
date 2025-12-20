@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): ViewModel() {
+class LoginViewModel @Inject constructor(private val authService: AuthService): ViewModel() {
 
     var state by mutableStateOf(LoginState())
         private set
@@ -36,16 +36,8 @@ class LoginViewModel @Inject constructor(): ViewModel() {
 
     fun login() = viewModelScope.launch {
         if (isValidForm()){
-            val retrofit = Retrofit
-                .Builder()
-                .baseUrl(Config.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            val authService = retrofit.create(AuthService::class.java)
             val response = authService.login(LoginRequest(state.email, state.password))
             Log.d("LoginViewModel", "Result: ${response.body()}")
-
        }
     }
 
