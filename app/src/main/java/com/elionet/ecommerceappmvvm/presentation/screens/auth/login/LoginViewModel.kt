@@ -8,19 +8,24 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
+import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.model.LoginRequest
+import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
+import com.elionet.ecommerceappmvvm.domain.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authService: AuthService): ViewModel() {
+class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
 
     var state by mutableStateOf(LoginState())
         private set
 
     var errorMessage by mutableStateOf("")
         private set
+
+    var loginResponse by mutableStateOf<Response<AuthResponse>?>(null)
 
     fun onEmailInput(email: String){
         state = state.copy(email = email)
@@ -32,8 +37,10 @@ class LoginViewModel @Inject constructor(private val authService: AuthService): 
 
     fun login() = viewModelScope.launch {
         if (isValidForm()){
-            val response = authService.login(LoginRequest(state.email, state.password))
-            Log.d("LoginViewModel", "Result: ${response.body()}")
+            loginResponse = Response.Loading    //ESPERANDO
+            val response = authUseCase.login(state.email, state.password)   //RETORNA UNA RESPUESTA
+            loginResponse = response    //EXITOSA / ERROR
+            Log.d("LoginViewModel", "Result: ${loginResponse}")
        }
     }
 

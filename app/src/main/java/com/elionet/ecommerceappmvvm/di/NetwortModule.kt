@@ -16,7 +16,7 @@ object NetwortModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
+    fun provideRetrofit(): Retrofit {   //POSTMAN
         return Retrofit
             .Builder()
             .baseUrl(Config.BASE_URL)
