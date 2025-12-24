@@ -11,6 +11,7 @@ import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +22,6 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         private set
 
     var errorMessage by mutableStateOf("")
-        private set
 
     var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
