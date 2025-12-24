@@ -7,11 +7,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
-import com.elionet.ecommerceappmvvm.domain.model.LoginRequest
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
-import com.elionet.ecommerceappmvvm.domain.util.Response
+import com.elionet.ecommerceappmvvm.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,7 +23,8 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     var errorMessage by mutableStateOf("")
         private set
 
-    var loginResponse by mutableStateOf<Response<AuthResponse>?>(null)
+    var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
+        private set
 
     fun onEmailInput(email: String){
         state = state.copy(email = email)
@@ -37,7 +36,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
 
     fun login() = viewModelScope.launch {
         if (isValidForm()){
-            loginResponse = Response.Loading    //ESPERANDO
+            loginResponse = Resource.Loading    //ESPERANDO
             val response = authUseCase.login(state.email, state.password)   //RETORNA UNA RESPUESTA
             loginResponse = response    //EXITOSA / ERROR
             Log.d("LoginViewModel", "Result: ${loginResponse}")

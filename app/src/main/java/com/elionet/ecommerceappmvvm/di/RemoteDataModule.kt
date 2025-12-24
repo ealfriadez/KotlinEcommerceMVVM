@@ -1,8 +1,8 @@
 package com.elionet.ecommerceappmvvm.di
 
-import com.elionet.ecommerceappmvvm.data.dataSource.remote.AuthRemoteDataSource
-import com.elionet.ecommerceappmvvm.data.dataSource.remote.AuthRemoteDataSourceImpl
-import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
+import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.repository.dataSourceImpl.AuthRemoteDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.service.AuthService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

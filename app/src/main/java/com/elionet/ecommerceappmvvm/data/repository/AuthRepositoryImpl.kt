@@ -1,18 +1,20 @@
 package com.elionet.ecommerceappmvvm.data.repository
 
-import com.elionet.ecommerceappmvvm.data.dataSource.remote.AuthRemoteDataSource
+import android.util.Log
+import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSource
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
-import com.elionet.ecommerceappmvvm.domain.util.Response
+import com.elionet.ecommerceappmvvm.domain.util.Resource
 
 class AuthRepositoryImpl(private val authRemoteDataSource: AuthRemoteDataSource): AuthRepository {
 
-    override suspend fun login(email: String, password: String): Response<AuthResponse> {
+    override suspend fun login(email: String, password: String): Resource<AuthResponse> {
         return try {
             val result = authRemoteDataSource.login(email, password)
-            Response.Success(result.body()!!)
+            Resource.Success(result.body()!!)
         }catch (e: Exception){
-            Response.Failure(e)
+            Log.d("AuthRepositoryImpl", "login: ${e.message}")
+            Resource.Failure(e)
         }
     }
 }

@@ -1,17 +1,14 @@
 package com.elionet.ecommerceappmvvm.presentation.navigation.graph
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.register.RegisterScreen
-import com.elionet.ecommerceappmvvm.ui.theme.KotlinEcommerceMVVMTheme
+import com.elionet.ecommerceappmvvm.presentation.screens.home.HomeScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
     navigation(
@@ -25,13 +22,17 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
         composable(route = AuthScreen.Register.route){
             RegisterScreen(navController)
         }
+
+        composable(route = AuthScreen.Home.route){
+            HomeScreen(navController)
+        }
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun LoginScreenPreview(){
-    KotlinEcommerceMVVMTheme {
-        LoginScreen(rememberNavController())
-    }
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun LoginScreenPreview(){
+//    KotlinEcommerceMVVMTheme {
+//        LoginScreen(rememberNavController())
+//    }
+//}
