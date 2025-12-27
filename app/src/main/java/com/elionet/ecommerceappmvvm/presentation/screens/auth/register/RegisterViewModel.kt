@@ -6,19 +6,44 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
+import com.elionet.ecommerceappmvvm.domain.model.User
+import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
+import com.elionet.ecommerceappmvvm.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(): ViewModel(){
+class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel(){
 
     var state by mutableStateOf(RegisterState())
         private set
 
     var errorMessage by mutableStateOf("")
+
+    var registerResponse by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
+
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
+
+    fun register() = viewModelScope.launch {
+        if(isValidForm()) {
+            val user = User(
+                name = state.name,
+                lastname = state.lastName,
+                email = state.email,
+                phone = state.phone,
+                password = state.password
+            )
+            registerResponse = Resource.Loading
+            val result = authUseCase.register(user)
+            registerResponse = result //DATA / ERROR
+        }
+    }
 
     fun onNameInput(name: String){
         state = state.copy(name = name)
@@ -44,28 +69,35 @@ class RegisterViewModel @Inject constructor(): ViewModel(){
         state = state.copy(confirmPassword = confirmPassword)
     }
 
-    fun validateForm() = viewModelScope.launch {
+    fun isValidForm(): Boolean {
         if(state.name == ""){
             errorMessage = "El nombre es requerido"
+            return false
         }else if(state.lastName == ""){
             errorMessage = "El apellido es requerido"
+            return false
         }else if(state.email == ""){
             errorMessage = "El email es requerido"
+            return false
         }else if(state.phone == ""){
             errorMessage = "El telefono es requerido"
+            return false
         }else if(state.password == ""){
             errorMessage = "La contraseña es requerida"
+            return false
         }else if(state.confirmPassword == ""){
             errorMessage = "La confirmacion de contraseña es requerida"
+            return false
         }else if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
             errorMessage = "El email es invalido"
+            return false
         }else if (state.password.length < 6) {
             errorMessage = "La contraseña debe tener al menos 6 caracteres"
+            return false
         }else if (state.password != state.confirmPassword) {
             errorMessage = "Las contraseñas no coinciden"
+            return false
         }
-
-        delay(3000)
-        errorMessage = ""
+        return true
     }
 }

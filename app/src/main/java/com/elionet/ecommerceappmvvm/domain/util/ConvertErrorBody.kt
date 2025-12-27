@@ -9,15 +9,15 @@ import okhttp3.ResponseBody
 
 object ConvertErrorBody {
 
-    fun convertErrorBody(errorBody: ResponseBody?): ErrorResponse?{
+    fun convert(errorBody: ResponseBody?): ErrorResponse?{
 
         return try {
+            errorBody?.source()?.let {
+                val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
 
-            errorBody?.source().let {  }
-            val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-
-            val moshiAdapter = moshi.adapter(ErrorResponse::class.java)
-            moshiAdapter.fromJson(it)
+                val moshiAdapter = moshi.adapter(ErrorResponse::class.java)
+                moshiAdapter.fromJson(it)
+            }
         } catch (e: Exception){
             Log.d("ConvertErrorBody", "Error: " + e.message)
             null

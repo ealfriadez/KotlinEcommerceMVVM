@@ -69,8 +69,16 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     //MOSHI
-    implementation("com.squareup.moshi:moshi:1.15.0")
-    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+    implementation(libs.moshi.v1152)
+    implementation(libs.moshi.kotlin)
+
+    //PREFERENCES DATA STORE
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    //COIL - ASYNC IMAGE
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

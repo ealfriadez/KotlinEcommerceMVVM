@@ -9,6 +9,7 @@ import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.register.RegisterScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.home.HomeScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.roles.RolesScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
     navigation(
@@ -26,13 +27,9 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
         composable(route = AuthScreen.Home.route){
             HomeScreen(navController)
         }
+
+        composable(route = AuthScreen.Roles.route){
+            RolesScreen(navController)
+        }
     }
 }
-
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun LoginScreenPreview(){
-//    KotlinEcommerceMVVMTheme {
-//        LoginScreen(rememberNavController())
-//    }
-//}

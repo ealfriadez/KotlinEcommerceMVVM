@@ -19,7 +19,9 @@ data class User(
     @SerializedName("image")
     val image: String? = null,
     @SerializedName("notification_token")
-    val notificationToken: String? = null
+    val notificationToken: String? = null,
+    @SerializedName("roles")
+    val roles: ArrayList<Rol>? = null
 ) {
     fun toJson(): String = Gson().toJson(this)
 

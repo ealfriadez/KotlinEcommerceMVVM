@@ -7,4 +7,6 @@ sealed class AuthScreen(val route: String) {
     object Register : AuthScreen(route = "register")
 
     object Home : AuthScreen(route = "home")
+
+    object Roles : AuthScreen(route = "roles")
 }

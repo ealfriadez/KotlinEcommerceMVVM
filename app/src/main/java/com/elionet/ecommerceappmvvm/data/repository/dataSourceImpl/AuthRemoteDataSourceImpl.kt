@@ -4,6 +4,7 @@ import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSou
 import com.elionet.ecommerceappmvvm.data.service.AuthService
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.model.LoginRequest
+import com.elionet.ecommerceappmvvm.domain.model.User
 import retrofit2.Response
 
 class AuthRemoteDataSourceImpl(private val authService: AuthService): AuthRemoteDataSource {
@@ -11,4 +12,7 @@ class AuthRemoteDataSourceImpl(private val authService: AuthService): AuthRemote
         email: String,
         password: String
     ): Response<AuthResponse> = authService.login(LoginRequest(email, password))
+
+    override suspend fun register(user: User): Response<AuthResponse> = authService.register(user)
+
 }

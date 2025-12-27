@@ -12,6 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.domain.util.Resource
+import com.elionet.ecommerceappmvvm.presentation.components.ProgressBar
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginViewModel
 
@@ -20,22 +21,30 @@ fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()
 
     when(val response = vm.loginResponse) {
         Resource.Loading -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ){
-                CircularProgressIndicator()
-            }
+            ProgressBar()
         }
 
         is Resource.Success -> {
             LaunchedEffect(Unit) {
-                navController.navigate(route = AuthScreen.Home.route)
+                vm.saveSession(response.data)
+                if (response.data.user?.roles!!.size > 1) {  //MAS DE UN ROL
+                    navController.navigate(route = AuthScreen.Roles.route) {
+                        popUpTo(AuthScreen.Login.route) {
+                            inclusive = true
+                        }
+                    }
+                } else {  //UN SOLO ROL
+                    navController.navigate(route = AuthScreen.Home.route) {
+                        popUpTo(AuthScreen.Login.route) {
+                            inclusive = true
+                        }
+                    }
+                }
             }
         }
 
         is Resource.Failure -> {
-            Toast.makeText(LocalContext.current, response.exception?.message ?: "Error desconocido 1", Toast.LENGTH_LONG).show()
+            Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
 
         else -> {

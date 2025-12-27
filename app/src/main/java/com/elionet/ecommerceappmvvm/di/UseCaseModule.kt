@@ -2,7 +2,10 @@ package com.elionet.ecommerceappmvvm.di
 
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.LoginUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +17,9 @@ object UseCaseModule {
 
     @Provides
     fun provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(
-        login = LoginUseCase(authRepository)
+        login = LoginUseCase(authRepository),
+        register = RegisterUseCase(authRepository),
+        saveSession = SaveSessionUseCase(authRepository),
+        getSessionData = GetSessionDataUseCase(authRepository)
     )
 }
