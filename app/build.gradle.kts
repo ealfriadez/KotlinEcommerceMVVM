@@ -77,8 +77,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
     //COIL - ASYNC IMAGE
-    implementation("io.coil-kt:coil-compose:2.2.2")
-
+    implementation(libs.coil.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
