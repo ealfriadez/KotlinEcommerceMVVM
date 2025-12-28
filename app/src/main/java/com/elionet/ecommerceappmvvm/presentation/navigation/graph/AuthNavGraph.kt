@@ -6,9 +6,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.home.AdminHomeScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.register.RegisterScreen
-import com.elionet.ecommerceappmvvm.presentation.screens.home.HomeScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.client.home.ClientHomeScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.roles.RolesScreen
 
 fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
@@ -22,14 +23,6 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
 
         composable(route = AuthScreen.Register.route){
             RegisterScreen(navController)
-        }
-
-        composable(route = AuthScreen.Home.route){
-            HomeScreen(navController)
-        }
-
-        composable(route = AuthScreen.Roles.route){
-            RolesScreen(navController)
         }
     }
 }

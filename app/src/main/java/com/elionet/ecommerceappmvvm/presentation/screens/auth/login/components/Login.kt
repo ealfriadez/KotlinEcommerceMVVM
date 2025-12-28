@@ -8,6 +8,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import com.elionet.ecommerceappmvvm.presentation.components.ProgressBar
+import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginViewModel
 
@@ -23,14 +24,14 @@ fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
                 if (response.data.user?.roles!!.size > 1) {  //MAS DE UN ROL
-                    navController.navigate(route = AuthScreen.Roles.route) {
-                        popUpTo(AuthScreen.Login.route) {
+                    navController.navigate(route = Graph.ROLES) {
+                        popUpTo(Graph.AUTH) {
                             inclusive = true
                         }
                     }
                 } else {  //UN SOLO ROL
-                    navController.navigate(route = AuthScreen.Home.route) {
-                        popUpTo(AuthScreen.Login.route) {
+                    navController.navigate(route = Graph.ROLES) {
+                        popUpTo(Graph.AUTH) {
                             inclusive = true
                         }
                     }

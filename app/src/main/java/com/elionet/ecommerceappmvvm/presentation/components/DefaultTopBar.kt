@@ -25,7 +25,7 @@ fun DefaultTopBar(
     TopAppBar(
         title = {
             Text(
-                text = "Registro",
+                text = title,
                 fontSize = 19.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
