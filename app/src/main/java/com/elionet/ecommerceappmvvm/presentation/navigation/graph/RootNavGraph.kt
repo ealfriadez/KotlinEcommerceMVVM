@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
+import com.elionet.ecommerceappmvvm.presentation.screens.client.home.ClientHomeScreen
 
 @Composable
 fun RootNavGraph(navController: NavHostController){
@@ -15,8 +16,5 @@ fun RootNavGraph(navController: NavHostController){
     ){
         AuthNavGraph(navController = navController)
         RolesNavGraph(navController = navController)
-        composable(route = Graph.CLIENT){
-
-        }
     }
 }

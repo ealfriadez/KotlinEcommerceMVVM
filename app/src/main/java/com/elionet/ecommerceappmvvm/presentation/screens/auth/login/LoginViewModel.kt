@@ -11,7 +11,6 @@ import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

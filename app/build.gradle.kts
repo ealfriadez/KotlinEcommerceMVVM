@@ -66,7 +66,7 @@ dependencies {
     //DAGER HILT - INYECCION DE DEPENDENCIAS
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.compose.material)
+    implementation (libs.androidx.material3)
     ksp(libs.hilt.android.compiler)
 
     //MOSHI

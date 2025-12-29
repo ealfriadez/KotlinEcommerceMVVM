@@ -14,17 +14,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.elionet.ecommerceappmvvm.domain.model.Rol
-import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 
 @Composable
 fun RolesItem(rol: Rol, navController: NavHostController){
     Column(
         modifier = Modifier.clickable{
-//            navController.navigate(route = rol.route){
-//                popUpTo(route = AuthScreen.Roles.route){
-//                    inclusive = true
-//                }
-//            }
+            navController.navigate(route = rol.route){
+                popUpTo(route = Graph.ROLES){
+                    inclusive = true
+                }
+            }
         }
     ) {
         Spacer(modifier = Modifier.height(20.dp))

@@ -30,6 +30,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-material3 = { module = "androidx.compose.material3:material3" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -53,7 +54,7 @@ moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
 moshi-v1152 = { module = "com.squareup.moshi:moshi", version.ref = "moshiVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-androidx-compose-material = { group = "androidx.wear.compose", name = "compose-material", version.ref = "composeMaterial" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -30,7 +30,7 @@ fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()
                         }
                     }
                 } else {  //UN SOLO ROL
-                    navController.navigate(route = Graph.ROLES) {
+                    navController.navigate(route = Graph.CLIENT) {
                         popUpTo(Graph.AUTH) {
                             inclusive = true
                         }
