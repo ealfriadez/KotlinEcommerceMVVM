@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.client.home.components
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.home.components
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon
@@ -9,11 +9,12 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.admin.AdminScreen
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ClientScreen
 
 @Composable
-fun RowScope.ClientBottomBarItem(
-    screen: ClientScreen,
+fun RowScope.AdminBottomBarItem(
+    screen: AdminScreen,
     currentDestination: NavDestination?,
     navController: NavHostController
 ){

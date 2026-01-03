@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.navigation.screen
+package com.elionet.ecommerceappmvvm.presentation.navigation.screen.roles
 
 sealed class RolesScreen(val route: String) {
 

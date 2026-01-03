@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.elionet.ecommerceappmvvm.presentation.navigation.graph.ClientNavGraph
+import com.elionet.ecommerceappmvvm.presentation.navigation.graph.client.ClientNavGraph
 import com.elionet.ecommerceappmvvm.presentation.screens.client.home.components.ClientBottomBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

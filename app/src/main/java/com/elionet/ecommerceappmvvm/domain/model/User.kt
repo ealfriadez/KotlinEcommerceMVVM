@@ -2,6 +2,8 @@ package com.elionet.ecommerceappmvvm.domain.model
 
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 data class User(
     @SerializedName("id")
@@ -21,11 +23,17 @@ data class User(
     @SerializedName("notification_token")
     val notificationToken: String? = null,
     @SerializedName("roles")
-    val roles: ArrayList<Rol>? = null
+    val roles: List<Rol>? = null
 ) {
-    fun toJson(): String = Gson().toJson(this)
-
-    companion object {
-        fun fromJson(data: String): User = Gson().fromJson(data, User::class.java)
-    }
+    fun toJson(): String = Gson().toJson(User(
+        id,
+        name,
+        lastname,
+        email,
+        phone,
+        password,
+        if(!image.isNullOrBlank()) URLEncoder.encode(image, StandardCharsets.UTF_8.toString()) else "",
+        notificationToken,
+        roles?.map { rol -> Rol.fromJson(rol.toJson()) }
+    ))
 }

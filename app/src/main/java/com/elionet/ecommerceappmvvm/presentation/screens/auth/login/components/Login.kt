@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import com.elionet.ecommerceappmvvm.presentation.components.ProgressBar
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
-import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.auth.AuthScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginViewModel
 
 @Composable

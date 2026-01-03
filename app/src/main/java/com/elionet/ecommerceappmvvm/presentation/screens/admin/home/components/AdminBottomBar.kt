@@ -1,19 +1,19 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.client.home.components
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.home.components
 
 import androidx.compose.material3.NavigationBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ClientScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.admin.AdminScreen
 
 @Composable
-fun ClientBottomBar(navController: NavHostController) {
+fun AdminBottomBar(navController: NavHostController) {
 
     val screens = listOf(
-        ClientScreen.CategoryList,
-        ClientScreen.ProductList,
-        ClientScreen.Profile
+        AdminScreen.CategoryList,
+        AdminScreen.ProductList,
+        AdminScreen.Profile
     )
 
     val navBackEntry by navController.currentBackStackEntryAsState()
@@ -23,7 +23,7 @@ fun ClientBottomBar(navController: NavHostController) {
     if (bottomBarDestination) {
         NavigationBar {
             screens.forEach { screen ->
-                ClientBottomBarItem(
+                AdminBottomBarItem(
                     screen = screen,
                     currentDestination = currentDestination,
                     navController = navController

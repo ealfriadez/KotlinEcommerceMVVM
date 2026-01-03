@@ -1,14 +1,15 @@
-package com.elionet.ecommerceappmvvm.presentation.navigation.graph
+package com.elionet.ecommerceappmvvm.presentation.navigation.graph.client
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
-import com.elionet.ecommerceappmvvm.presentation.navigation.screen.ClientScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.graph.profile.ProfileNavGraph
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ClientScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.client.category.list.ClientCategoryListScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.client.product.list.ClientProductListScreen
-import com.elionet.ecommerceappmvvm.presentation.screens.profile.ProfileScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.profile.info.ProfileScreen
 
 @Composable
 fun ClientNavGraph(navController: NavHostController){
@@ -24,7 +25,9 @@ fun ClientNavGraph(navController: NavHostController){
            ClientProductListScreen()
        }
        composable(route = ClientScreen.Profile.route){
-           ProfileScreen()
+           ProfileScreen(navController)
        }
+
+        ProfileNavGraph(navController)
     }
 }

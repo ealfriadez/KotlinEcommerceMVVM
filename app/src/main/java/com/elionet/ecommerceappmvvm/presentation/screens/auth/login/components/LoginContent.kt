@@ -42,7 +42,7 @@ import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.R
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
-import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.auth.AuthScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.login.LoginViewModel
 import com.elionet.ecommerceappmvvm.ui.theme.AccentColor
 

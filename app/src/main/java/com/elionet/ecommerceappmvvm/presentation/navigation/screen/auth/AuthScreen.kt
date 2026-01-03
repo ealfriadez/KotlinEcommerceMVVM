@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.navigation.screen
+package com.elionet.ecommerceappmvvm.presentation.navigation.screen.auth
 
 sealed class AuthScreen(val route: String) {
 

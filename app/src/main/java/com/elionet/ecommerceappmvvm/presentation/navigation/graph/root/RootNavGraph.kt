@@ -1,11 +1,11 @@
-package com.elionet.ecommerceappmvvm.presentation.navigation.graph
+package com.elionet.ecommerceappmvvm.presentation.navigation.graph.root
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
-import com.elionet.ecommerceappmvvm.presentation.screens.client.home.ClientHomeScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.graph.auth.AuthNavGraph
+import com.elionet.ecommerceappmvvm.presentation.navigation.graph.roles.RolesNavGraph
 
 @Composable
 fun RootNavGraph(navController: NavHostController){

@@ -8,7 +8,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import com.elionet.ecommerceappmvvm.presentation.components.ProgressBar
-import com.elionet.ecommerceappmvvm.presentation.navigation.screen.AuthScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.screens.auth.register.RegisterViewModel
 
 @Composable
@@ -21,11 +21,11 @@ fun Register(navController: NavHostController, vm: RegisterViewModel = hiltViewM
         is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-//                navController.navigate(route = AuthScreen.Home.route){
-//                    popUpTo (AuthScreen.Login.route){
-//                        inclusive = true
-//                    }
-//                }
+                navController.navigate(route = Graph.CLIENT) {
+                        popUpTo(Graph.AUTH) {
+                            inclusive = true
+                        }
+                    }
             }
         }
         is Resource.Failure -> {

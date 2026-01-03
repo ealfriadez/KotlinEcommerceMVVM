@@ -30,7 +30,7 @@ fun RegisterScreen(navController: NavHostController){
             DefaultTopBar(
                 title = "Registro",
                 upAvailable = true,
-                navCotroller = navController
+                navController = navController
             )
         },
     ) { paddingValues ->

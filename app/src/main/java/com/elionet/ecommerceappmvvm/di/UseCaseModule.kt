@@ -4,6 +4,7 @@ import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.LoginUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.auth.LogoutUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
 import dagger.Module
@@ -20,6 +21,7 @@ object UseCaseModule {
         login = LoginUseCase(authRepository),
         register = RegisterUseCase(authRepository),
         saveSession = SaveSessionUseCase(authRepository),
-        getSessionData = GetSessionDataUseCase(authRepository)
+        getSessionData = GetSessionDataUseCase(authRepository),
+        logout = LogoutUseCase(authRepository)
     )
 }

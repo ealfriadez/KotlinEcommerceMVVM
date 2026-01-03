@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.navigation.screen
+package com.elionet.ecommerceappmvvm.presentation.navigation.screen.client
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
