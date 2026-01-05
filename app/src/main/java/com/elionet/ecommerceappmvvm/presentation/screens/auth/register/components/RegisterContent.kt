@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -114,12 +116,9 @@ fun RegisterContent(
                 colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.8f))
             ) {
                 Column(
-                    modifier = Modifier.padding(
-                        top = 30.dp,
-                        end = 30.dp,
-                        start = 30.dp,
-                        bottom = 30.dp
-                    ),
+                    modifier = Modifier
+                        .padding(top = 30.dp, end = 30.dp, start = 30.dp, bottom = 30.dp)
+                        .verticalScroll(rememberScrollState()),
                 ) {
                     Text(
                         modifier = Modifier.padding(bottom = 20.dp),
@@ -211,7 +210,3 @@ fun RegisterContent(
         }
     }
 }
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun RegisterScreenPreview(){ }

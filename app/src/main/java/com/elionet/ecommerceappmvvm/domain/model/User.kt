@@ -2,29 +2,22 @@ package com.elionet.ecommerceappmvvm.domain.model
 
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
 data class User(
-    @SerializedName("id")
-    val id: Long? = 0,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("lastname")
-    val lastname: String,
-    @SerializedName("email")
-    val email: String,
-    @SerializedName("phone")
-    val phone: String,
-    @SerializedName("password")
-    val password: String,
-    @SerializedName("image")
-    val image: String? = null,
-    @SerializedName("notification_token")
-    val notificationToken: String? = null,
-    @SerializedName("roles")
-    val roles: List<Rol>? = null
-) {
+    @SerializedName("id") val id: String? = "",
+    @SerializedName("name") val name: String,
+    @SerializedName("lastname") val lastname: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("phone") val phone: String,
+    @SerializedName("password") val password: String? = null,
+    @SerializedName("image") val image: String? = null,
+    @SerializedName("notification_token") val notificationToken: String? = null,
+    @SerializedName("roles") val roles: List<Rol>? = null
+): Serializable {
+
     fun toJson(): String = Gson().toJson(User(
         id,
         name,
@@ -36,4 +29,8 @@ data class User(
         notificationToken,
         roles?.map { rol -> Rol.fromJson(rol.toJson()) }
     ))
+
+    companion object {
+        fun fromJson(data: String): User = Gson().fromJson(data, User::class.java)
+    }
 }
