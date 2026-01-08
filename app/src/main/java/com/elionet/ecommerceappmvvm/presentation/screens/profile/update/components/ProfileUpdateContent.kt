@@ -38,6 +38,7 @@ import coil.compose.AsyncImage
 import com.elionet.ecommerceappmvvm.R
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
+import com.elionet.ecommerceappmvvm.presentation.components.DialogCapturePicture
 import com.elionet.ecommerceappmvvm.presentation.screens.profile.update.ProfileUpdateViewModel
 
 @Composable
@@ -45,6 +46,12 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
 
     val activity = LocalContext.current as? Activity
     val state = vm.state
+
+    DialogCapturePicture(
+        state = vm.stateDialog,
+        takePhoto = {},
+        pickImage = {}
+    ) { }
 
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
