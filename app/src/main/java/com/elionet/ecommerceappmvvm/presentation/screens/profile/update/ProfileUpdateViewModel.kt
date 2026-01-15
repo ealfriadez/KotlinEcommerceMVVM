@@ -5,12 +5,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.elionet.ecommerceappmvvm.domain.model.User
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
+import java.net.URLDecoder
 import javax.inject.Inject
+import android.util.Log
 
 @HiltViewModel
 class ProfileUpdateViewModel @Inject constructor(
@@ -23,9 +23,16 @@ class ProfileUpdateViewModel @Inject constructor(
 
     //ARGUMENTS
     val data = savedStateHandle.get<String>("user")
-    val user = User.fromJson(data!!)
+
+    /*val user = User.fromJson(data!!)*/
+
+    // Decodificamos el String antes de pasarlo a fromJson
+    val user = User.fromJson(URLDecoder.decode(data!!, "UTF-8"))
 
     init{
+
+        Log.d("ProfileUpdateViewModel", "URL de la imagen: ${user.image}")
+
         state = state.copy(
             name = user.name,
             lastName = user.lastname,
@@ -49,6 +56,4 @@ class ProfileUpdateViewModel @Inject constructor(
     fun onImageInput(image: String){
         state = state.copy(image = image)
     }
-
-
 }

@@ -45,6 +45,7 @@ import com.elionet.ecommerceappmvvm.presentation.MainActivity
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.screens.profile.info.ProfileViewModel
+import java.net.URLEncoder
 
 @Composable
 fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltViewModel(), navController: NavHostController){
@@ -192,8 +193,19 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
                         modifier = Modifier
                             .fillMaxWidth(),
                         text = "Actualizar informacion",
-                        onClick = {
+                        /*onClick = {
                             navController.navigate(route = "${Graph.PROFILE}/${vm.user?.toJson()}")
+                        }*/
+                        onClick = {
+                            // 1. Obtenemos el JSON
+                            val userJson = vm.user?.toJson()
+
+                            // 2. Lo codificamos para que sea seguro viajar en la ruta
+                            // Importa java.net.URLEncoder
+                            val encodedJson = URLEncoder.encode(userJson, "UTF-8")
+
+                            // 3. Navegamos con el JSON codificado
+                            navController.navigate(route = "${Graph.PROFILE}/$encodedJson")
                         }
                     )
                     Spacer(modifier = Modifier.height(15.dp))
