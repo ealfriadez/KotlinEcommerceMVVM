@@ -80,6 +80,9 @@ dependencies {
     //COIL - ASYNC IMAGE
     implementation(libs.coil.compose)
 
+    //FILES TRANSFORMATION
+    implementation("commons-io:commons-io:2.7")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
