@@ -151,7 +151,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
                         modifier = Modifier
                             .fillMaxWidth(),
                         text = "Confirmar",
-                        onClick = { /*TODO*/ }
+                        onClick = { vm.update() }
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                 }

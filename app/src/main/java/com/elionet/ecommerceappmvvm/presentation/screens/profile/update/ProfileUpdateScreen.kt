@@ -4,8 +4,10 @@ import android.util.Log
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
 import com.elionet.ecommerceappmvvm.presentation.screens.profile.update.components.ProfileUpdateContent
+import com.elionet.ecommerceappmvvm.presentation.screens.profile.update.components.UpdateUser
 
 @Composable
 fun ProfileUpdateScreen(navController: NavHostController, userParam: String){
@@ -23,4 +25,6 @@ fun ProfileUpdateScreen(navController: NavHostController, userParam: String){
     ) { paddingValues ->
         ProfileUpdateContent(paddingValues = paddingValues)
     }
+
+    UpdateUser()
 }

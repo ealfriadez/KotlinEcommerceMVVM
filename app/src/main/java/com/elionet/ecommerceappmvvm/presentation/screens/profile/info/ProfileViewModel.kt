@@ -1,5 +1,6 @@
 package com.elionet.ecommerceappmvvm.presentation.screens.profile.info
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -18,6 +19,8 @@ class ProfileViewModel @Inject constructor(private val authUseCase: AuthUseCase)
         private set
 
     init{
+
+        Log.d("ProfileViewModel", "User: $user")
         getSessionData()
     }
 

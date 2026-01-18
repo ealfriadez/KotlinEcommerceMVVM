@@ -1,12 +1,15 @@
 package com.elionet.ecommerceappmvvm.di
 
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
+import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.LoginUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.LogoutUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
+import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +26,10 @@ object UseCaseModule {
         saveSession = SaveSessionUseCase(authRepository),
         getSessionData = GetSessionDataUseCase(authRepository),
         logout = LogoutUseCase(authRepository)
+    )
+
+    @Provides
+    fun provideUsersUseCase(usersRepository: UsersRepository) = UsersUseCase(
+        updateUser = UpdateUserUserCase(usersRepository)
     )
 }

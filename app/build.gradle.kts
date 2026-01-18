@@ -81,7 +81,7 @@ dependencies {
     implementation(libs.coil.compose)
 
     //FILES TRANSFORMATION
-    implementation("commons-io:commons-io:2.7")
+    implementation(libs.commons.io)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

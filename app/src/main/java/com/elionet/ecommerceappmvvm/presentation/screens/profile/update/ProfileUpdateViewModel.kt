@@ -13,6 +13,8 @@ import java.net.URLDecoder
 import javax.inject.Inject
 import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
+import com.elionet.ecommerceappmvvm.domain.util.Resource
 import com.elionet.ecommerceappmvvm.presentation.util.ComposeFileProvider
 import com.elionet.ecommerceappmvvm.presentation.util.ResultingActivityHandler
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -22,6 +24,7 @@ import java.io.File
 @HiltViewModel
 class ProfileUpdateViewModel @Inject constructor(
     private val authUseCase: AuthUseCase,
+    private val usersUseCase: UsersUseCase,
     private val savedStateHandle: SavedStateHandle,
     @ApplicationContext private val context: Context
 ): ViewModel(){
@@ -33,15 +36,19 @@ class ProfileUpdateViewModel @Inject constructor(
     val data = savedStateHandle.get<String>("user")
 
     // Decodificamos el String antes de pasarlo a fromJson
-    val user = User.fromJson(URLDecoder.decode(data!!, "UTF-8"))
+    var user = User.fromJson(URLDecoder.decode(data!!, "UTF-8"))
 
     //IMAGENES
     var file: File? = null
     val resultingActivityHandler= ResultingActivityHandler()
 
+    var updateResponse by mutableStateOf<Resource<User>?>(null)
+        private set
+
+
     init{
 
-        Log.d("ProfileUpdateViewModel", "URL de la imagen: ${user.image}")
+        Log.d("ProfileUpdateViewModel", "URL de la imagen: ${user}")
 
         state = state.copy(
             name = user.name,
@@ -49,6 +56,24 @@ class ProfileUpdateViewModel @Inject constructor(
             phone = user.phone,
             image = user.image ?: ""
         )
+    }
+
+    fun update() = viewModelScope.launch {
+
+        val userData = User(
+            name = state.name,
+            lastname = state.lastName,
+            phone = state.phone
+        )
+
+        updateResponse = Resource.Loading
+        val result = usersUseCase.updateUser(user.id ?: "", userData)
+        updateResponse = result
+    }
+
+    fun logout() = viewModelScope.launch {
+        authUseCase.logout()
+
     }
 
     fun pickImage() = viewModelScope.launch {
