@@ -3,7 +3,6 @@ package com.elionet.ecommerceappmvvm.data.service
 import com.elionet.ecommerceappmvvm.domain.model.User
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.Header
 import retrofit2.http.PUT
 import retrofit2.http.Path
 
