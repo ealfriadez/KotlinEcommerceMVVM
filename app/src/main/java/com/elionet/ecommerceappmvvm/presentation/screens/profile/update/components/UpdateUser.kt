@@ -31,7 +31,7 @@ fun UpdateUser(vm: ProfileUpdateViewModel = hiltViewModel()) {
 
         else -> {
             if(response != null){
-                Toast.makeText(LocalContext.current, "Error desconocido 2", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Error desconocido", Toast.LENGTH_LONG).show()
             }
         }
     }
