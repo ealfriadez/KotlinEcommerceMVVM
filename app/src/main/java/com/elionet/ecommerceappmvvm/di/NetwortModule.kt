@@ -1,5 +1,6 @@
 package com.elionet.ecommerceappmvvm.di
 
+import android.util.Log
 import com.elionet.ecommerceappmvvm.core.Config
 import com.elionet.ecommerceappmvvm.data.datastore.AuthDataStore
 import com.elionet.ecommerceappmvvm.data.service.AuthService
@@ -11,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -19,12 +21,22 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetwortModule {
 
+    val logging = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.HEADERS // Esto te mostrará si el Token va en el Header
+    }
+    val client = OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
+
     @Provides
     @Singleton
     fun provideOkHttpClient(datastore: AuthDataStore) = OkHttpClient.Builder().addInterceptor {
+
         val token = runBlocking {
             datastore.getData().first().token
         }
+
+        Log.d("NetwortModule", "Token recuperado: $token") // Añade esto para debug
 
         val newRequest = it.request().newBuilder().addHeader("Authorization", token ?: "").build()
         it.proceed(newRequest)
