@@ -5,8 +5,9 @@ import com.elionet.ecommerceappmvvm.domain.model.User
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import com.elionet.ecommerceappmvvm.domain.util.ResponseToRequest
+import javax.inject.Inject
 
-class UsersRepositoryImpl(
+class UsersRepositoryImpl @Inject constructor(
 
     private val usersRemoteDataSource: UsersRemoteDataSource
 
