@@ -69,6 +69,8 @@ class ProfileUpdateViewModel @Inject constructor(
         updateResponse = Resource.Loading
         val result = usersUseCase.updateUser(user.id ?: "", userData)
         updateResponse = result
+
+        Log.d("ProfileUpdateViewModel - 2", "URL de la imagen: ${result}")
     }
 
     fun logout() = viewModelScope.launch {
