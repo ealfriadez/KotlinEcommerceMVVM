@@ -15,6 +15,7 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
 import com.elionet.ecommerceappmvvm.domain.util.Resource
+import com.elionet.ecommerceappmvvm.presentation.screens.profile.update.mapper.toUser
 import com.elionet.ecommerceappmvvm.presentation.util.ComposeFileProvider
 import com.elionet.ecommerceappmvvm.presentation.util.ResultingActivityHandler
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -60,19 +61,11 @@ class ProfileUpdateViewModel @Inject constructor(
 
     fun update() = viewModelScope.launch {
 
-        val userData = User(
-            name = state.name,
-            lastname = state.lastName,
-            phone = state.phone
-        )
-
-        Log.d("ProfileUpdateViewModel - 2", "URL de la imagen: ${userData.name} ${userData.lastname} ${userData.phone}")
-
         updateResponse = Resource.Loading
 
         Log.d("ProfileUpdateViewModel - 3", "URL de la imagen: ${updateResponse.toString()}")
 
-        val result = usersUseCase.updateUser(user.id ?: "", userData)
+        val result = usersUseCase.updateUser(user.id ?: "", state.toUser())
 
         updateResponse = result
 

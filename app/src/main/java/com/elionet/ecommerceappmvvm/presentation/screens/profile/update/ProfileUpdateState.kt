@@ -4,5 +4,5 @@ data class ProfileUpdateState(
     val name: String = "",
     val lastName: String = "",
     val phone: String = "",
-    val image: String = ""
+    val image: String? = null
 )
