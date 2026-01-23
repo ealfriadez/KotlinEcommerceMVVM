@@ -10,6 +10,7 @@ import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.model.User
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.util.Resource
+import com.elionet.ecommerceappmvvm.presentation.screens.auth.register.mapper.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -32,15 +33,8 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
 
     fun register() = viewModelScope.launch {
         if(isValidForm()) {
-            val user = User(
-                name = state.name,
-                lastname = state.lastName,
-                email = state.email,
-                phone = state.phone,
-                password = state.password
-            )
             registerResponse = Resource.Loading
-            val result = authUseCase.register(user)
+            val result = authUseCase.register(state.toUser())
             registerResponse = result //DATA / ERROR
         }
     }

@@ -6,9 +6,9 @@ import com.elionet.ecommerceappmvvm.presentation.screens.auth.register.RegisterS
 fun RegisterState.toUser(): User{
     return User(
         name = name,
-        lastname = lastname,
+        lastname = lastName,
         email = email,
-        phone = phone
+        phone = phone,
         password = password
     )
 }

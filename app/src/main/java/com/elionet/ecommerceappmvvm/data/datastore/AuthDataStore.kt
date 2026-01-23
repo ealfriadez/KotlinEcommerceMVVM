@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.elionet.ecommerceappmvvm.core.Config.AUTH_KEY
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
+import com.elionet.ecommerceappmvvm.domain.model.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -18,6 +19,10 @@ class AuthDataStore constructor(private val dataStore: DataStore<Preferences>){
         dataStore.edit { preferences ->
             preferences[dataStoreKey] = authResponse.toJson()
         }
+    }
+
+    suspend fun update(user: User){
+        val dataStoreKey =
     }
 
     suspend fun delete(){
