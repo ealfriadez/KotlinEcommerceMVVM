@@ -59,6 +59,10 @@ class ProfileUpdateViewModel @Inject constructor(
         )
     }
 
+    fun updateUserSession() = viewModelScope.launch {
+        authUseCase.updateSession(state.toUser())
+    }
+
     fun update() = viewModelScope.launch {
 
         updateResponse = Resource.Loading

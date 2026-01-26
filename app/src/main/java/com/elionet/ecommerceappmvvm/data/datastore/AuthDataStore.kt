@@ -8,7 +8,9 @@ import com.elionet.ecommerceappmvvm.core.Config.AUTH_KEY
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.model.User
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.runBlocking
 
 class AuthDataStore constructor(private val dataStore: DataStore<Preferences>){
 
@@ -22,7 +24,20 @@ class AuthDataStore constructor(private val dataStore: DataStore<Preferences>){
     }
 
     suspend fun update(user: User){
-        val dataStoreKey =
+
+        val dataStoreKey = stringPreferencesKey(AUTH_KEY)
+        val authResponse = runBlocking {
+            getData().first()
+        }
+
+        authResponse.user?.name = user.name
+        authResponse.user?.lastname = user.lastname
+        authResponse.user?.phone = user.phone
+        if(!authResponse.user?.image.isNullOrBlank()) authResponse.user?.image = user.image
+
+        dataStore.edit { preferences ->
+            preferences[dataStoreKey] = authResponse.toJson()
+        }
     }
 
     suspend fun delete(){

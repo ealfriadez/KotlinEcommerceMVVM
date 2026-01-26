@@ -22,6 +22,8 @@ fun UpdateUser(vm: ProfileUpdateViewModel = hiltViewModel()) {
             //401 TOKEN
             Log.d("UpdateUser", "Data: ${response.data}")
 
+            vm.updateUserSession()
+
             Toast.makeText(LocalContext.current, "Los datos se actualizaron correctamente", Toast.LENGTH_LONG).show()
         }
 
