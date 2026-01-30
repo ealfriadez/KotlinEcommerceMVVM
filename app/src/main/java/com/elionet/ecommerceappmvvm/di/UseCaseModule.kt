@@ -10,6 +10,7 @@ import com.elionet.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.UpdateSessionUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
+import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserWithImageCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
 import dagger.Module
 import dagger.Provides
@@ -32,6 +33,7 @@ object UseCaseModule {
 
     @Provides
     fun provideUsersUseCase(usersRepository: UsersRepository) = UsersUseCase(
-        updateUser = UpdateUserUserCase(usersRepository)
+        updateUser = UpdateUserUserCase(usersRepository),
+        updateUserWithImage = UpdateUserWithImageCase(usersRepository)
     )
 }

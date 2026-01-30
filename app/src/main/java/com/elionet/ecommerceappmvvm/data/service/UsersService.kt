@@ -13,9 +13,20 @@ import retrofit2.http.Path
 interface UsersService {
 
    //http://192.168.1.5:3000/users
-   @PUT("users/upload/{id}")
+   //@PUT("users/upload/{id}")
+   @PUT("users/{id}")
     suspend fun update(
         @Path("id") id: String,
         @Body() user: User
+    ): Response<User>
+
+    @Multipart
+    @PUT("users/upload/{id}")
+    suspend fun updateWithImage(
+        @Part file: MultipartBody.Part,
+        @Path("id") id: String,
+        @Part("name") name: RequestBody,
+        @Part("lastname") lastname: RequestBody,
+        @Part("phone") phone: RequestBody
     ): Response<User>
 }

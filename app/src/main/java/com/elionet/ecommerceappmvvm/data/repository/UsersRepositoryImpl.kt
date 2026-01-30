@@ -5,6 +5,7 @@ import com.elionet.ecommerceappmvvm.domain.model.User
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import com.elionet.ecommerceappmvvm.domain.util.ResponseToRequest
+import java.io.File
 import javax.inject.Inject
 
 class UsersRepositoryImpl @Inject constructor(
@@ -15,5 +16,13 @@ class UsersRepositoryImpl @Inject constructor(
 
     override suspend fun update(id: String, user: User): Resource<User> = ResponseToRequest.send(
         usersRemoteDataSource.update(id, user)
+    )
+
+    override suspend fun updateWithImage(
+        id: String,
+        user: User,
+        file: File
+    ): Resource<User> = ResponseToRequest.send(
+        usersRemoteDataSource.updateWithImage(id, user, file)
     )
 }
