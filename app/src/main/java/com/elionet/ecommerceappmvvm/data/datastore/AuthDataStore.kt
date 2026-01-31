@@ -1,5 +1,6 @@
 package com.elionet.ecommerceappmvvm.data.datastore
 
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -30,10 +31,13 @@ class AuthDataStore constructor(private val dataStore: DataStore<Preferences>){
             getData().first()
         }
 
+        Log.d("AuthDatastore", "User: ${user.toJson()}")
+
         authResponse.user?.name = user.name
         authResponse.user?.lastname = user.lastname
         authResponse.user?.phone = user.phone
-        if(!authResponse.user?.image.isNullOrBlank()) authResponse.user?.image = user.image
+
+        if(!user?.image.isNullOrBlank()) authResponse.user?.image = user.image
 
         dataStore.edit { preferences ->
             preferences[dataStoreKey] = authResponse.toJson()
