@@ -1,7 +1,6 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.components
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.category.create.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -9,14 +8,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -34,11 +31,12 @@ import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
 
 @Composable
-fun AdminProductListContent(paddingValues: PaddingValues){
-
+fun AdminCategoryCreateContent(paddingValues: PaddingValues){
     Column(
         modifier = Modifier
             .padding(paddingValues = paddingValues)
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -52,13 +50,13 @@ fun AdminProductListContent(paddingValues: PaddingValues){
         Spacer(modifier = Modifier.height(40.dp))
 
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().weight(1f),
             shape = RoundedCornerShape(
                 topEnd = 40.dp,
                 topStart = 40.dp
             ),
             colors = CardDefaults.cardColors(
-                containerColor = Color.White.copy(alpha = 0.7f)
+                containerColor = Color.White
             )
         ) {
             Column(
@@ -86,7 +84,7 @@ fun AdminProductListContent(paddingValues: PaddingValues){
                     label = "Descripcion",
                     icon = Icons.Outlined.Info
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.weight(1f))
                 DefaultButton(
                     modifier = Modifier
                         .fillMaxWidth(),
