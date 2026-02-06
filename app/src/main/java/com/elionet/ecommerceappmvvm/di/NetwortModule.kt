@@ -4,6 +4,7 @@ import android.util.Log
 import com.elionet.ecommerceappmvvm.core.Config
 import com.elionet.ecommerceappmvvm.data.datastore.AuthDataStore
 import com.elionet.ecommerceappmvvm.data.service.AuthService
+import com.elionet.ecommerceappmvvm.data.service.CategoriesService
 import com.elionet.ecommerceappmvvm.data.service.UsersService
 import dagger.Module
 import dagger.Provides
@@ -55,5 +56,11 @@ object NetwortModule {
     @Singleton
     fun provideUsersService(retrofit: Retrofit): UsersService {
         return retrofit.create(UsersService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoriesService(retrofit: Retrofit): CategoriesService {
+        return retrofit.create(CategoriesService::class.java)
     }
 }
