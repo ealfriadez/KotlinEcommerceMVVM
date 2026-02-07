@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.create.components.AdminCategoryCreateContent
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.create.components.CreateCategory
 import com.elionet.ecommerceappmvvm.ui.theme.Gray200
 
 @Composable
@@ -23,4 +24,5 @@ fun AdminCategoryCreateScreen(navController: NavHostController){
         paddingValues ->
         AdminCategoryCreateContent(paddingValues = paddingValues)
     }
+    CreateCategory()
 }

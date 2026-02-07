@@ -1,6 +1,7 @@
 package com.elionet.ecommerceappmvvm.di
 
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
+import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
@@ -9,6 +10,9 @@ import com.elionet.ecommerceappmvvm.domain.useCase.auth.LogoutUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.RegisterUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.UpdateSessionUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.categories.CategoriesUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.categories.CreateCategoryUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.categories.GetCategoriesUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserWithImageCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
@@ -35,5 +39,11 @@ object UseCaseModule {
     fun provideUsersUseCase(usersRepository: UsersRepository) = UsersUseCase(
         updateUser = UpdateUserUserCase(usersRepository),
         updateUserWithImage = UpdateUserWithImageCase(usersRepository)
+    )
+
+    @Provides
+    fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
+        createCategory = CreateCategoryUseCase(categoriesRepository),
+        getCategories = GetCategoriesUseCase(categoriesRepository)
     )
 }

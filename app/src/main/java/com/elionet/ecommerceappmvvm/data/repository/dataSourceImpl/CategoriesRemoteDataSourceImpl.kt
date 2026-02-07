@@ -15,9 +15,20 @@ import java.io.File
 
 class CategoriesRemoteDataSourceImpl(private val categoriesService: CategoriesService): CategoriesRemoteDataSource {
 
-     override suspend fun getCategories(): Response<List<Category>> = categoriesService.getCategories()
+    override suspend fun create(category: Category, file: File): Response<Category> {
 
-    override suspend fun create(category: Category): Response<Category> = categoriesService.create(category)
+        val connection = file.toURI().toURL().openConnection()
+        val mimeType = connection.contentType   //"image/png | image/jpg"
+        val contentType = "text/plain"
+        val requestFile = file.asRequestBody(mimeType.toMediaTypeOrNull())
+        val fileFormData = MultipartBody.Part.createFormData("file", file.name, requestFile)
+        val nameData = category.name.toRequestBody(contentType.toMediaTypeOrNull())
+        val descriptionData = category.description.toRequestBody(contentType.toMediaTypeOrNull())
+
+        return categoriesService.create(fileFormData,nameData,descriptionData)
+    }
+
+    override suspend fun getCategories(): Response<List<Category>> = categoriesService.getCategories()
 
     override suspend fun update(
         id: String,

@@ -13,6 +13,7 @@ import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.components.AdminCategoryListContent
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.components.GetCategories
 
 @Composable
 fun AdminCategoryListScreen(navController: NavHostController){
@@ -31,4 +32,5 @@ fun AdminCategoryListScreen(navController: NavHostController){
     ) { paddingValues ->
         AdminCategoryListContent(paddingValues = paddingValues)
     }
+    GetCategories()
 }

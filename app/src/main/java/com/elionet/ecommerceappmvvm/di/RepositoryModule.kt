@@ -4,8 +4,11 @@ import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSou
 import com.elionet.ecommerceappmvvm.data.repository.AuthRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.UsersRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthLocalDataSource
+import com.elionet.ecommerceappmvvm.data.repository.dataSource.CategoriesRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.repository.dataSource.UsersRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.repository.CategoriesRepositoryImpl
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
+import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
@@ -26,4 +29,9 @@ object RepositoryModule {
     fun provideUsersRepository(
         usersRemoteDataSource: UsersRemoteDataSource
     ): UsersRepository = UsersRepositoryImpl(usersRemoteDataSource)
+
+    @Provides
+    fun provideCategoriesRepository(
+        categoriesRemoteDataSource: CategoriesRemoteDataSource
+    ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource)
 }

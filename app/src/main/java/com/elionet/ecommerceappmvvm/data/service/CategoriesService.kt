@@ -18,14 +18,17 @@ interface CategoriesService {
     @GET("categories")
     suspend fun getCategories(): Response<List<Category>>
 
+    @Multipart
     @POST("categories")
     suspend fun create(
-        @Body category: Category
+        @Part file: MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody
     ): Response<Category>
 
     @PUT("categories/{id}")
     suspend fun update(
-        @Path("id") id: String,
+        @Part("id") id: String,
         @Body category: Category
     ): Response<Category>
 
@@ -33,13 +36,13 @@ interface CategoriesService {
     @PUT("categories/{id}")
     suspend fun updateWithImage(
         @Part file: MultipartBody.Part,
-        @Path("id") id: String,
-        @Path("name") name: RequestBody,
-        @Path("description") description: RequestBody,
+        @Part("id") id: String,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
     ): Response<Category>
 
     @DELETE("categories/{id}")
     suspend fun delete(
-        @Path("id") id: String
+        @Part("id") id: String
     ): Response<Unit>
 }
