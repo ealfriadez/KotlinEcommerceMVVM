@@ -91,7 +91,7 @@ fun LoginContent(
                 modifier = Modifier
                     .height(100.dp)
                     .width(100.dp),
-                painter = painterResource(R.drawable.shopping_cart_blue),
+                painter = painterResource(R.drawable.mundial),
                 contentDescription =  "Logo"
             )
             Text(

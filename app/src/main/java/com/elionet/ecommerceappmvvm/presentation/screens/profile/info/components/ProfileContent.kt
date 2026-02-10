@@ -3,6 +3,7 @@ package com.elionet.ecommerceappmvvm.presentation.screens.profile.info.component
 import android.app.Activity
 import android.content.Intent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -73,13 +74,30 @@ fun ProfileContent(paddingValues: PaddingValues, vm: ProfileViewModel = hiltView
             )
         )
 
-        Column(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            IconButton(
+                    modifier = Modifier
+                        .align(Alignment.End)
+                        .padding(end = 15.dp, top = 15.dp),
+                onClick = {
+                    vm.logout()
+                    activity?.finish()
+                    activity?.startActivity(Intent(activity, MainActivity::class.java))
+                }
+            ) {
+                Image(
+                    modifier = Modifier.size(35.dp),
+                    painter = painterResource(id = R.drawable.logout),
+                    contentDescription = ""
+                )
+            }
             IconButton(
                 modifier = Modifier
                     .align(Alignment.End)
-                    .padding(end = 15.dp, top = 15.dp),
+                    .padding(end = 15.dp, top = 0.dp),
                 onClick = {
-                    vm.logout()
                     activity?.finish()
                     activity?.startActivity(Intent(activity, MainActivity::class.java))
                 }

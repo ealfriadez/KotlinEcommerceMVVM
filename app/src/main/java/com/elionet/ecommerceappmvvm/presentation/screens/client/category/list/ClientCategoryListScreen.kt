@@ -2,11 +2,14 @@ package com.elionet.ecommerceappmvvm.presentation.screens.client.category.list
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import com.elionet.ecommerceappmvvm.presentation.screens.client.category.list.components.ClientCategoryListContent
+import androidx.navigation.NavHostController
+import com.elionet.ecommerceappmvvm.presentation.screens.client.category.list.components.GetCategories
 
 @Composable
-fun ClientCategoryListScreen(){
+fun ClientCategoryListScreen(
+    navController: NavHostController
+){
     Scaffold() { paddingValues ->
-        ClientCategoryListContent(paddingValues = paddingValues)
+        GetCategories(paddingValues, navController)
     }
 }
