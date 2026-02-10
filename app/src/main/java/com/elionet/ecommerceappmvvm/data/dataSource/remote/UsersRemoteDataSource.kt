@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.data.repository.dataSource
+package com.elionet.ecommerceappmvvm.data.dataSource.remote
 
 import com.elionet.ecommerceappmvvm.domain.model.User
 import retrofit2.Response

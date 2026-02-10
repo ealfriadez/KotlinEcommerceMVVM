@@ -12,7 +12,10 @@ import com.elionet.ecommerceappmvvm.domain.useCase.auth.SaveSessionUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.UpdateSessionUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.CategoriesUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.CreateCategoryUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.categories.DeleteCategoryUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.GetCategoriesUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.categories.UpdateCategoryUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.categories.UpdateCategoryWithImageUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserWithImageCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
@@ -44,6 +47,9 @@ object UseCaseModule {
     @Provides
     fun provideCategoriesUseCase(categoriesRepository: CategoriesRepository) = CategoriesUseCase(
         createCategory = CreateCategoryUseCase(categoriesRepository),
-        getCategories = GetCategoriesUseCase(categoriesRepository)
+        getCategories = GetCategoriesUseCase(categoriesRepository),
+        updateCategory = UpdateCategoryUseCase(categoriesRepository),
+        updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository),
+        deleteCategory = DeleteCategoryUseCase(categoriesRepository)
     )
 }

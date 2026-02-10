@@ -1,7 +1,6 @@
-package com.elionet.ecommerceappmvvm.data.repository.dataSourceImpl
+package com.elionet.ecommerceappmvvm.data.dataSource.remote
 
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.UsersRemoteDataSource
-import com.elionet.ecommerceappmvvm.data.service.UsersService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.UsersService
 import com.elionet.ecommerceappmvvm.domain.model.User
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

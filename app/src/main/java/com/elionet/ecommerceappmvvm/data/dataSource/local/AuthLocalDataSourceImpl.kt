@@ -1,7 +1,6 @@
-package com.elionet.ecommerceappmvvm.data.repository.dataSourceImpl
+package com.elionet.ecommerceappmvvm.data.dataSource.local
 
-import com.elionet.ecommerceappmvvm.data.datastore.AuthDataStore
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.local.datastore.AuthDataStore
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import com.elionet.ecommerceappmvvm.domain.model.User
 import kotlinx.coroutines.flow.Flow

@@ -1,14 +1,14 @@
 package com.elionet.ecommerceappmvvm.di
 
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSource
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.CategoriesRemoteDataSource
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.UsersRemoteDataSource
-import com.elionet.ecommerceappmvvm.data.repository.dataSourceImpl.AuthRemoteDataSourceImpl
-import com.elionet.ecommerceappmvvm.data.repository.dataSourceImpl.CategoriesRemoteDataSourceImpl
-import com.elionet.ecommerceappmvvm.data.repository.dataSourceImpl.UsersRemoteDataSourceImpl
-import com.elionet.ecommerceappmvvm.data.service.AuthService
-import com.elionet.ecommerceappmvvm.data.service.CategoriesService
-import com.elionet.ecommerceappmvvm.data.service.UsersService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.AuthRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.CategoriesRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.AuthRemoteDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.CategoriesRemoteDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.CategoriesService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.UsersService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

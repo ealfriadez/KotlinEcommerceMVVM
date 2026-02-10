@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.admin.category.create.components
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.category.update.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -34,12 +34,12 @@ import com.elionet.ecommerceappmvvm.R
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
 import com.elionet.ecommerceappmvvm.presentation.components.DialogCapturePicture
-import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.update.AdminCategoryUpdateViewModel
 
 @Composable
-fun AdminCategoryCreateContent(
+fun AdminCategoryUpdateContent(
     paddingValues: PaddingValues,
-    vm: AdminCategoryCreateViewModel = hiltViewModel()
+    vm: AdminCategoryUpdateViewModel = hiltViewModel()
 ){
 
     val state = vm.state
@@ -123,8 +123,8 @@ fun AdminCategoryCreateContent(
                 DefaultButton(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    text = "Crear categoria",
-                    onClick = { vm.createCategory() }
+                    text = "Actualizar categoria",
+                    onClick = { vm.onUpdate() }
                 )
                 Spacer(modifier = Modifier.height(15.dp))
             }

@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.data.datastore
+package com.elionet.ecommerceappmvvm.data.dataSource.local.datastore
 
 import android.util.Log
 import androidx.datastore.core.DataStore

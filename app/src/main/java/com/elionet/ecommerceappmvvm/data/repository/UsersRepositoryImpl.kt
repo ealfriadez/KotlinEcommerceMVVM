@@ -1,6 +1,6 @@
 package com.elionet.ecommerceappmvvm.data.repository
 
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.UsersRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSource
 import com.elionet.ecommerceappmvvm.domain.model.User
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import com.elionet.ecommerceappmvvm.domain.util.Resource

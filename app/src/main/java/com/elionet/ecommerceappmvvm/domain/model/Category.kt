@@ -21,6 +21,6 @@ data class Category(
     ))
 
     companion object {
-        fun fromJson(data: String): Rol = Gson().fromJson(data, Rol::class.java)
+        fun fromJson(data: String): Category = Gson().fromJson(data, Category::class.java)
     }
 }

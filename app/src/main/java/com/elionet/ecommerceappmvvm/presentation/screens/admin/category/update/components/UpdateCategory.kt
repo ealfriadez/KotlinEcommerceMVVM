@@ -1,31 +1,28 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.components
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.category.update.components
 
 import android.util.Log
 import android.widget.Toast
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import com.elionet.ecommerceappmvvm.presentation.components.ProgressBar
-import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.AdminCategoryListViewModel
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.update.AdminCategoryUpdateViewModel
 
 @Composable
-fun GetCategories(
-    navController: NavHostController,
-    paddingValues: PaddingValues,
-    vm: AdminCategoryListViewModel = hiltViewModel()
-){
-    when(val response = vm.categoriesResponse) {
+fun UpdateCategory(vm: AdminCategoryUpdateViewModel = hiltViewModel()) {
+
+    when(val response = vm.categoryResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
 
         is Resource.Success -> {
+
             //401 TOKEN
-            Log.d("GetCategories", "Data: ${response.data}")
-            AdminCategoryListContent(navController, categories = response.data, paddingValues)
+            Log.d("UpdateCategory", "Data: ${response.data}")
+
+            Toast.makeText(LocalContext.current, "Los datos se actualizaron correctamente", Toast.LENGTH_LONG).show()
         }
 
         is Resource.Failure -> {

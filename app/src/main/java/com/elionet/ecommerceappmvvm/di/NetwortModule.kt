@@ -1,11 +1,16 @@
 package com.elionet.ecommerceappmvvm.di
 
+import android.app.Application
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import com.elionet.ecommerceappmvvm.core.Config
-import com.elionet.ecommerceappmvvm.data.datastore.AuthDataStore
-import com.elionet.ecommerceappmvvm.data.service.AuthService
-import com.elionet.ecommerceappmvvm.data.service.CategoriesService
-import com.elionet.ecommerceappmvvm.data.service.UsersService
+import com.elionet.ecommerceappmvvm.data.dataSource.local.datastore.AuthDataStore
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.CategoriesService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.UsersService
+import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +28,10 @@ object NetwortModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(datastore: AuthDataStore) = OkHttpClient.Builder().addInterceptor {
+    fun provideOkHttpClient(
+        datastore: AuthDataStore,
+        app: Application
+    ) = OkHttpClient.Builder().addInterceptor { chain ->
 
         val token = runBlocking {
             datastore.getData().first().token
@@ -31,8 +39,26 @@ object NetwortModule {
 
         Log.d("NetwortModule", "Token recuperado: $token") // Añade esto para debug
 
-        val newRequest = it.request().newBuilder().addHeader("Authorization", token ?: "").build()
-        it.proceed(newRequest)
+        val newRequest = chain.request().newBuilder().addHeader("Authorization", token ?: "").build()
+
+        //1.Procederemos con la peticion y guardamos la respuesta
+        val response = chain.proceed(newRequest)
+
+        // 2. Validamos si el código es 401 (Token expirado/inválido)
+        if (response.code == 401) {
+            // Borramos los datos del DataStore para cerrar sesión
+            runBlocking {
+                datastore.saveUser(AuthResponse()) // Limpiamos la sesión (ajusta según tu modelo)
+            }
+
+            // Mostramos el Toast en el hilo principal
+            Handler(Looper.getMainLooper()).post {
+                Toast.makeText(app, "Sesión expirada. Inicie sesión nuevamente", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        response // Devolvemos la respuesta original (sea 200, 401, etc.)
+
     }.build()
 
     @Provides

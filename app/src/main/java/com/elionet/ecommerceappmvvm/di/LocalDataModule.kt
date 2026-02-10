@@ -1,8 +1,11 @@
 package com.elionet.ecommerceappmvvm.di
 
-import com.elionet.ecommerceappmvvm.data.datastore.AuthDataStore
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthLocalDataSource
-import com.elionet.ecommerceappmvvm.data.repository.dataSourceImpl.AuthLocalDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.local.datastore.AuthDataStore
+import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.local.dao.CategoriesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,4 +18,8 @@ object LocalDataModule {
     @Provides
     fun provideAuthLocalDataSource(authDatastore: AuthDataStore): AuthLocalDataSource =
         AuthLocalDataSourceImpl(authDatastore)
+
+    @Provides
+    fun provideCategoriesLocalDataSource(categoriesDao: CategoriesDao): CategoriesLocalDataSource =
+        CategoriesLocalDataSourceImpl(categoriesDao)
 }

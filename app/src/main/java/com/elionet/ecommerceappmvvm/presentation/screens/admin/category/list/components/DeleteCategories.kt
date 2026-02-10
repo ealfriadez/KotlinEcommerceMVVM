@@ -12,20 +12,17 @@ import com.elionet.ecommerceappmvvm.presentation.components.ProgressBar
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun GetCategories(
-    navController: NavHostController,
-    paddingValues: PaddingValues,
-    vm: AdminCategoryListViewModel = hiltViewModel()
+fun DeleteCategory(vm: AdminCategoryListViewModel = hiltViewModel()
 ){
-    when(val response = vm.categoriesResponse) {
+    when(val response = vm.deleteCategoriesResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
 
         is Resource.Success -> {
             //401 TOKEN
-            Log.d("GetCategories", "Data: ${response.data}")
-            AdminCategoryListContent(navController, categories = response.data, paddingValues)
+            Log.d("DeleteCategory", "Data: ${response.data}")
+            Toast.makeText(LocalContext.current, "La categoría se eliminó correctamente", Toast.LENGTH_LONG).show()
         }
 
         is Resource.Failure -> {

@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.data.service
+package com.elionet.ecommerceappmvvm.data.dataSource.remote.service
 
 import com.elionet.ecommerceappmvvm.domain.model.Category
 import okhttp3.MultipartBody
@@ -26,23 +26,31 @@ interface CategoriesService {
         @Part("description") description: RequestBody
     ): Response<Category>
 
+    /*@PUT("categories/{id}")
+    suspend fun update(
+        @Path("id") id: String,
+        @Body category: Category
+    ): Response<Category>*/
+
+    @Multipart
     @PUT("categories/{id}")
     suspend fun update(
-        @Part("id") id: String,
-        @Body category: Category
+        @Path("id") id: String,
+        @Part("name") name: RequestBody,
+        @Part("description") description: RequestBody,
     ): Response<Category>
 
     @Multipart
     @PUT("categories/{id}")
     suspend fun updateWithImage(
         @Part file: MultipartBody.Part,
-        @Part("id") id: String,
+        @Path("id") id: String,
         @Part("name") name: RequestBody,
         @Part("description") description: RequestBody,
     ): Response<Category>
 
     @DELETE("categories/{id}")
     suspend fun delete(
-        @Part("id") id: String
+        @Path("id") id: String
     ): Response<Unit>
 }

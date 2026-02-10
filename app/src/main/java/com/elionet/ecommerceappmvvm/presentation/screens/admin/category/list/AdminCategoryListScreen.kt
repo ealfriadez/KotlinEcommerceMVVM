@@ -13,6 +13,7 @@ import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.components.AdminCategoryListContent
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.components.DeleteCategory
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.list.components.GetCategories
 
 @Composable
@@ -21,7 +22,8 @@ fun AdminCategoryListScreen(navController: NavHostController){
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                modifier = Modifier.padding(bottom = 70.dp),
+                modifier = Modifier
+                    .padding(bottom = 70.dp),
                 onClick = {navController.navigate(Graph.ADMIN_CATEGORY)}
             ) {
                 Icon(
@@ -30,7 +32,7 @@ fun AdminCategoryListScreen(navController: NavHostController){
             }
         }
     ) { paddingValues ->
-        AdminCategoryListContent(paddingValues = paddingValues)
+        GetCategories(navController, paddingValues)
     }
-    GetCategories()
+    DeleteCategory()
 }

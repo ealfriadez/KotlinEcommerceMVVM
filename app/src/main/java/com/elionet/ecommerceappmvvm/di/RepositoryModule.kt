@@ -1,11 +1,12 @@
 package com.elionet.ecommerceappmvvm.di
 
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.AuthRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.repository.AuthRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.UsersRepositoryImpl
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.AuthLocalDataSource
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.CategoriesRemoteDataSource
-import com.elionet.ecommerceappmvvm.data.repository.dataSource.UsersRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.CategoriesRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.repository.CategoriesRepositoryImpl
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
@@ -32,6 +33,7 @@ object RepositoryModule {
 
     @Provides
     fun provideCategoriesRepository(
-        categoriesRemoteDataSource: CategoriesRemoteDataSource
-    ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource)
+        categoriesRemoteDataSource: CategoriesRemoteDataSource,
+        categoriesLocalDataSource: CategoriesLocalDataSource
+    ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource, categoriesLocalDataSource)
 }
