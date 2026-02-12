@@ -1,6 +1,5 @@
 package com.elionet.ecommerceappmvvm.presentation.navigation.graph.admin
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -17,11 +16,11 @@ fun AdminNavGraph(navController: NavHostController){
     NavHost(
         navController = navController,
         route = Graph.ADMIN,
-        startDestination = AdminScreen.ProductList.route
+        startDestination = AdminScreen.CategoryList.route
     ){
-        composable(route = AdminScreen.ProductList.route){
+        /*composable(route = AdminScreen.ProductList.route){
             AdminProductListScreen()
-        }
+        }*/
 
         composable(route = AdminScreen.CategoryList.route){
            AdminCategoryListScreen(navController)
