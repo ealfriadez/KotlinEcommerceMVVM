@@ -6,10 +6,13 @@ import com.elionet.ecommerceappmvvm.data.repository.UsersRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.CategoriesRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.ProductsRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.repository.CategoriesRepositoryImpl
+import com.elionet.ecommerceappmvvm.data.repository.ProductsRepositoryImpl
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
+import com.elionet.ecommerceappmvvm.domain.repository.ProductsRepository
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import dagger.Module
 import dagger.Provides
@@ -36,4 +39,9 @@ object RepositoryModule {
         categoriesRemoteDataSource: CategoriesRemoteDataSource,
         categoriesLocalDataSource: CategoriesLocalDataSource
     ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource, categoriesLocalDataSource)
+
+    @Provides
+    fun provideProductsRepository(
+        productsRemoteDataSource: ProductsRemoteDataSource
+    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource)
 }

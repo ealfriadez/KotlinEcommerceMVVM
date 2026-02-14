@@ -12,15 +12,17 @@ import com.elionet.ecommerceappmvvm.domain.model.Product
 
 @Composable
 fun AdminProductListContent(
-    paddingValues: PaddingValues
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    products: List<Product>
 ){
     LazyColumn(
         modifier = Modifier
             .padding(paddingValues = paddingValues)
             .fillMaxSize()
     ) {
-        /*items(items = products){product ->
-            //AdminProductListItem(navController, product)
-        }*/
+        items(products){product ->
+            AdminProductListItem(navController, product)
+        }
     }
 }

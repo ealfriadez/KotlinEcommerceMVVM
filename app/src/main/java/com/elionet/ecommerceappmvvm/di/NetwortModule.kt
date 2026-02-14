@@ -9,6 +9,7 @@ import com.elionet.ecommerceappmvvm.core.Config
 import com.elionet.ecommerceappmvvm.data.dataSource.local.datastore.AuthDataStore
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.CategoriesService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.ProductsService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.UsersService
 import com.elionet.ecommerceappmvvm.domain.model.AuthResponse
 import dagger.Module
@@ -88,5 +89,11 @@ object NetwortModule {
     @Singleton
     fun provideCategoriesService(retrofit: Retrofit): CategoriesService {
         return retrofit.create(CategoriesService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductsService(retrofit: Retrofit): ProductsService {
+        return retrofit.create(ProductsService::class.java)
     }
 }

@@ -14,6 +14,7 @@ import com.elionet.ecommerceappmvvm.presentation.screens.admin.category.update.A
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.home.AdminHomeScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.AdminProductCreateScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.AdminProductListScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.AdminProductUpdateScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.client.home.ClientHomeScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.roles.RolesScreen
 
@@ -53,6 +54,16 @@ fun NavGraphBuilder.AdminCategoryNavGraph(navController: NavHostController){
             })){
             it.arguments?.getString("category").let {
                 AdminProductCreateScreen(navController, it!!)
+            }
+        }
+
+        composable(route = AdminCategoryScreen.ProductUpdate
+            .route,
+            arguments = listOf(navArgument("product"){
+                type = NavType.StringType
+            })){
+            it.arguments?.getString("product").let {
+                AdminProductUpdateScreen(navController, it!!)
             }
         }
     }

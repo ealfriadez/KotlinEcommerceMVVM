@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update
 
 import android.content.Context
 import androidx.compose.runtime.getValue
@@ -21,37 +21,44 @@ import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class AdminProductCreateViewModel @Inject constructor(
+class AdminProductUpdateViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val savedStateHandle: SavedStateHandle,
     private val productsUseCase: ProductsUseCase
 ) : ViewModel() {
 
-    var state by mutableStateOf(AdminProductCreateState())
+    var state by mutableStateOf(AdminProductUpdateState())
         private set
 
     var productResponse by mutableStateOf<Resource<Product>?>(null)
         private set
 
-    var data = savedStateHandle.get<String>("category")
-    var category = Category.fromJson(data!!)
-
+    var data = savedStateHandle.get<String>("product")
+    var product = Product.fromJson(data!!)
 
     var file1: File? = null
     var file2: File? = null
-    var files: List<File> = listOf()
+        var files: List<File> = listOf()
     val resultingActivityHandler = ResultingActivityHandler()
 
     init{
-        state = state.copy(idCategory = category.id ?: "")
+        state = state.copy(
+            id = product.id ?: "",
+            name = product.name,
+            description = product.description,
+            price = product.price,
+            idCategory = product.idCategory,
+            image1 = product.image1 ?: "",
+            image2 = product.image2 ?: ""
+        )
     }
 
     fun createProduct() = viewModelScope.launch {
         if (file1 != null && file2 !== null){
             files = listOf(file1!!, file2!!)
             productResponse = Resource.Loading
-            val result = productsUseCase.createProduct(state.toProduct(), files)
-            productResponse = result
+            //val result = productsUseCase.createProduct(state.toProduct(), files)
+           // productResponse = result
         }
     }
 
@@ -81,17 +88,6 @@ class AdminProductCreateViewModel @Inject constructor(
                 file2 = File(state.image2)
             }
         }
-    }
-
-    fun clearForm(){
-        state = state.copy(
-            name = "",
-            description = "",
-            image1 = "",
-            image2 = "",
-            price = 0.0
-        )
-        productResponse = null
     }
 
     fun onNameInput(input: String){

@@ -17,6 +17,7 @@ import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.components.AdminProductListContent
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.components.GetProducts
 import com.elionet.ecommerceappmvvm.presentation.screens.client.product.list.components.ClientProductListContent
 
 @Composable
@@ -40,7 +41,6 @@ fun AdminProductListScreen(
             }
         }
     ) {paddingValues ->
-        AdminProductListContent(paddingValues = paddingValues)
-
+        GetProducts(navController, paddingValues)
     }
 }

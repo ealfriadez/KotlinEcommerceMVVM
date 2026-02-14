@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.components
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -38,11 +38,12 @@ import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
 import com.elionet.ecommerceappmvvm.presentation.components.DialogCapturePicture
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.AdminProductCreateViewModel
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.AdminProductUpdateViewModel
 
 @Composable
-fun AdminProductCreateContent(
+fun AdminProductUpdateContent(
     paddingValues: PaddingValues,
-    vm: AdminProductCreateViewModel = hiltViewModel()
+    vm: AdminProductUpdateViewModel = hiltViewModel()
 ) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
@@ -136,7 +137,7 @@ fun AdminProductCreateContent(
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
                     modifier = Modifier.padding(bottom = 20.dp),
-                    text = vm.category.name.uppercase(),
+                    text = vm.product.name.uppercase(),
                     fontWeight = FontWeight.Bold,
                     fontSize = 20.sp,
                     color = Color.Black
@@ -167,7 +168,7 @@ fun AdminProductCreateContent(
                 DefaultButton(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    text = "Crear producto",
+                    text = "Actualizar producto",
                     onClick = { vm.createProduct() }
                 )
                 Spacer(modifier = Modifier.height(15.dp))

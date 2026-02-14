@@ -2,6 +2,7 @@ package com.elionet.ecommerceappmvvm.di
 
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
+import com.elionet.ecommerceappmvvm.domain.repository.ProductsRepository
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
@@ -16,6 +17,9 @@ import com.elionet.ecommerceappmvvm.domain.useCase.categories.DeleteCategoryUseC
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.GetCategoriesUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.UpdateCategoryUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.UpdateCategoryWithImageUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.products.CreateProductUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.products.FindByCategoryUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.products.ProductsUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserWithImageCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
@@ -51,5 +55,11 @@ object UseCaseModule {
         updateCategory = UpdateCategoryUseCase(categoriesRepository),
         updateCategoryWithImage = UpdateCategoryWithImageUseCase(categoriesRepository),
         deleteCategory = DeleteCategoryUseCase(categoriesRepository)
+    )
+
+    @Provides
+    fun provideProductsUseCase(productsRepository: ProductsRepository) = ProductsUseCase(
+        createProduct = CreateProductUseCase(productsRepository),
+        findByCategory = FindByCategoryUseCase(productsRepository)
     )
 }

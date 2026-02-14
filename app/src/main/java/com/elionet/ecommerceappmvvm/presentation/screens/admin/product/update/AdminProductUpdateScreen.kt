@@ -1,4 +1,4 @@
-package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create
+package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update
 
 import android.util.Log
 import androidx.compose.material3.Scaffold
@@ -7,26 +7,28 @@ import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.components.AdminProductCreateContent
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.components.CreateProduct
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.components.AdminProductUpdateContent
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.components.UpdateProduct
 import com.elionet.ecommerceappmvvm.ui.theme.Gray200
 
 @Composable
-fun AdminProductCreateScreen(
+fun AdminProductUpdateScreen(
     navController: NavHostController,
-    categoryParam: String
+    productParam: String
 ){
-    Log.d("AdminProductCreateScreen", "Category: ${categoryParam}")
+    Log.d("AdminProductUpdateScreen", "Product: $productParam")
 
     Scaffold(
         topBar = {
             DefaultTopBar(
-                title = "Nuevo producto",
+                title = "Actualizar producto",
                 upAvailable = true,
                 navController = navController
             )
         },
         containerColor = Gray200   // 🔥 reemplaza backgroundColor
     ) { paddingValues ->
-        AdminProductCreateContent(paddingValues = paddingValues)
+        AdminProductUpdateContent(paddingValues = paddingValues)
     }
-    CreateProduct()
+    UpdateProduct()
 }
