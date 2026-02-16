@@ -1,17 +1,17 @@
 package com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.elionet.ecommerceappmvvm.domain.model.Category
 import com.elionet.ecommerceappmvvm.domain.model.Product
 import com.elionet.ecommerceappmvvm.domain.useCase.products.ProductsUseCase
 import com.elionet.ecommerceappmvvm.domain.util.Resource
-import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.mapper.toProduct
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.mapper.toProduct
 import com.elionet.ecommerceappmvvm.presentation.util.ComposeFileProvider
 import com.elionet.ecommerceappmvvm.presentation.util.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,7 +38,7 @@ class AdminProductUpdateViewModel @Inject constructor(
 
     var file1: File? = null
     var file2: File? = null
-        var files: List<File> = listOf()
+    var files: MutableList<File> = mutableListOf()
     val resultingActivityHandler = ResultingActivityHandler()
 
     init{
@@ -53,12 +53,30 @@ class AdminProductUpdateViewModel @Inject constructor(
         )
     }
 
-    fun createProduct() = viewModelScope.launch {
-        if (file1 != null && file2 !== null){
-            files = listOf(file1!!, file2!!)
-            productResponse = Resource.Loading
-            //val result = productsUseCase.createProduct(state.toProduct(), files)
-           // productResponse = result
+    fun updateProduct() = viewModelScope.launch {
+        productResponse = Resource.Loading
+        if (file1 == null && file2 == null){
+
+            val productToUpdate = state.toProduct()
+            Log.d("DEBUG_UPDATE", "ID: ${productToUpdate.id}, Name: ${productToUpdate.name}")
+            val result = productsUseCase.updateProduct(product.id!!,state.toProduct())
+            productResponse = result
+        }
+        else{
+
+            val productToUpdate = state.toProduct()
+            Log.d("DEBUG_UPDATE", "ID: ${productToUpdate.id}, Name: ${productToUpdate.name}")
+
+            if(file1 != null){
+                files.add(file1!!)
+                state.imagesToUpdate.add(0)
+            }
+            if(file2 != null){
+                files.add(file2!!)
+                state.imagesToUpdate.add(1)
+            }
+            val result = productsUseCase.updateProductWithImageUseCase(product.id!!,state.toProduct(), files.toList())
+            productResponse = result
         }
     }
 
@@ -68,10 +86,12 @@ class AdminProductUpdateViewModel @Inject constructor(
             if(imageNumber == 1){
                 file1 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image1 = result.toString())
+                files.add(file1!!)
             }
             else if(imageNumber == 2){
                 file2 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image2 = result.toString())
+                files.add(file2!!)
             }
         }
     }
@@ -82,10 +102,12 @@ class AdminProductUpdateViewModel @Inject constructor(
             if(imageNumber == 1){
                 state = state.copy(image1 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file1 = File(state.image1)
+                files.add(file1!!)
             }
             else if(imageNumber == 2){
                 state = state.copy(image2 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file2 = File(state.image2)
+                files.add(file2!!)
             }
         }
     }

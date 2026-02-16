@@ -8,5 +8,5 @@ data class AdminProductUpdateState(
     val image1: String = "",
     val image2: String = "",
     val price: Double = 0.0,
-    val imagesToUpdate: List<Int> = listOf()
+    val imagesToUpdate: MutableList<Int> = mutableListOf()
 )

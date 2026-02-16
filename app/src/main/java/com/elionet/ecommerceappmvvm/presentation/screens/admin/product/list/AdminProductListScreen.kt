@@ -9,16 +9,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.domain.model.Category
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
-import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.admin.AdminCategoryScreen
-import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.components.AdminProductListContent
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.components.GetProducts
-import com.elionet.ecommerceappmvvm.presentation.screens.client.product.list.components.ClientProductListContent
 
 @Composable
 fun AdminProductListScreen(
@@ -29,6 +25,13 @@ fun AdminProductListScreen(
     val categoryParse = Category.fromJson(categoryParam).toJson()
 
     Scaffold(
+        topBar = {
+            DefaultTopBar(
+                title = "Productos",
+                upAvailable = true,
+                navController = navController
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(
                 modifier = Modifier

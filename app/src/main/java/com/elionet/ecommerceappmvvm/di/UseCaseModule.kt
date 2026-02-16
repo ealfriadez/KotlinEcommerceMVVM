@@ -20,6 +20,8 @@ import com.elionet.ecommerceappmvvm.domain.useCase.categories.UpdateCategoryWith
 import com.elionet.ecommerceappmvvm.domain.useCase.products.CreateProductUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.products.FindByCategoryUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.products.ProductsUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.products.UpdateProductUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.products.UpdateProductWithImageUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserWithImageCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
@@ -60,6 +62,9 @@ object UseCaseModule {
     @Provides
     fun provideProductsUseCase(productsRepository: ProductsRepository) = ProductsUseCase(
         createProduct = CreateProductUseCase(productsRepository),
-        findByCategory = FindByCategoryUseCase(productsRepository)
+        findByCategory = FindByCategoryUseCase(productsRepository),
+        updateProduct = UpdateProductUseCase(productsRepository),
+        updateProductWithImageUseCase = UpdateProductWithImageUseCase(productsRepository)
+        //delete = DeleteProductUseCase(productsRepository)
     )
 }

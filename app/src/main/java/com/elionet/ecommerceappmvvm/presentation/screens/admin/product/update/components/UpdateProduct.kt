@@ -21,12 +21,13 @@ fun UpdateProduct(vm: AdminProductUpdateViewModel = hiltViewModel()) {
         is Resource.Success -> {
 
             //401 TOKEN
-            Log.d("CreateProduct", "Data: ${response.data}")
+            Log.d("UpdateProduct", "Data: ${response.data}")
 
-            Toast.makeText(LocalContext.current, "Los datos se han creado correctamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(LocalContext.current, "Los datos se han actualizado correctamente", Toast.LENGTH_LONG).show()
         }
 
         is Resource.Failure -> {
+            Log.d("UpdateProduct", "Data: ${response.message}")
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
 

@@ -4,6 +4,7 @@ data class ProductsUseCase(
     //val findAll: FindAllProductsUseCase,
     val findByCategory: FindByCategoryUseCase,
     val createProduct: CreateProductUseCase,
-    //val update: UpdateProductUseCase,
+    val updateProduct: UpdateProductUseCase,
+    val updateProductWithImageUseCase: UpdateProductWithImageUseCase,
     //val delete: DeleteProductUseCase
 )

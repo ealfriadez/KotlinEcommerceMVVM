@@ -169,7 +169,7 @@ fun AdminProductUpdateContent(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "Actualizar producto",
-                    onClick = { vm.createProduct() }
+                    onClick = { vm.updateProduct() }
                 )
                 Spacer(modifier = Modifier.height(15.dp))
             }

@@ -9,6 +9,9 @@ fun AdminProductUpdateState.toProduct(): Product{
         name = name,
         description = description,
         idCategory = idCategory,
-        price = price
+        price = price,
+        imagesToUpdate = imagesToUpdate.toList(),
+        image1 = image1,
+        image2 = image2
     )
 }
