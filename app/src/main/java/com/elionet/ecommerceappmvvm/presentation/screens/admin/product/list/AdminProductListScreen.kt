@@ -14,6 +14,7 @@ import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.domain.model.Category
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.admin.AdminCategoryScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.components.DeleteProduct
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.list.components.GetProducts
 
 @Composable
@@ -46,4 +47,5 @@ fun AdminProductListScreen(
     ) {paddingValues ->
         GetProducts(navController, paddingValues)
     }
+    DeleteProduct()
 }

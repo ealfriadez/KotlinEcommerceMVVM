@@ -5,8 +5,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
-import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.components.AdminProductCreateContent
-import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.components.CreateProduct
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.components.AdminProductUpdateContent
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.components.UpdateProduct
 import com.elionet.ecommerceappmvvm.ui.theme.Gray200

@@ -43,7 +43,7 @@ class AdminProductUpdateViewModel @Inject constructor(
 
     init{
         state = state.copy(
-            id = product.id ?: "",
+            //id = product.id ?: "",
             name = product.name,
             description = product.description,
             price = product.price,
@@ -58,14 +58,14 @@ class AdminProductUpdateViewModel @Inject constructor(
         if (file1 == null && file2 == null){
 
             val productToUpdate = state.toProduct()
-            Log.d("DEBUG_UPDATE", "ID: ${productToUpdate.id}, Name: ${productToUpdate.name}")
+            Log.d("DEBUG_UPDATE 1", "ID: ${productToUpdate.id}, Data: $productToUpdate")
             val result = productsUseCase.updateProduct(product.id!!,state.toProduct())
             productResponse = result
         }
         else{
 
             val productToUpdate = state.toProduct()
-            Log.d("DEBUG_UPDATE", "ID: ${productToUpdate.id}, Name: ${productToUpdate.name}")
+            Log.d("DEBUG_UPDATE 2", "ID: ${productToUpdate.id}, Data: $productToUpdate")
 
             if(file1 != null){
                 files.add(file1!!)
@@ -75,9 +75,15 @@ class AdminProductUpdateViewModel @Inject constructor(
                 files.add(file2!!)
                 state.imagesToUpdate.add(1)
             }
+            Log.d("AdminProductUpdateViewModel", "Producto: ${state.toProduct()}")
+            Log.d("AdminProductUpdateViewModel", "Producto id: ${state.toProduct()}")
             val result = productsUseCase.updateProductWithImageUseCase(product.id!!,state.toProduct(), files.toList())
             productResponse = result
         }
+        files.clear()
+        file1 = null
+        file2 = null
+        state.imagesToUpdate.clear()
     }
 
     fun pickImage(imageNumber: Int) = viewModelScope.launch {
@@ -86,12 +92,12 @@ class AdminProductUpdateViewModel @Inject constructor(
             if(imageNumber == 1){
                 file1 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image1 = result.toString())
-                files.add(file1!!)
+                //files.add(file1!!)
             }
             else if(imageNumber == 2){
                 file2 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image2 = result.toString())
-                files.add(file2!!)
+                //files.add(file2!!)
             }
         }
     }
@@ -102,12 +108,12 @@ class AdminProductUpdateViewModel @Inject constructor(
             if(imageNumber == 1){
                 state = state.copy(image1 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file1 = File(state.image1)
-                files.add(file1!!)
+                //files.add(file1!!)
             }
             else if(imageNumber == 2){
                 state = state.copy(image2 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file2 = File(state.image2)
-                files.add(file2!!)
+                //files.add(file2!!)
             }
         }
     }

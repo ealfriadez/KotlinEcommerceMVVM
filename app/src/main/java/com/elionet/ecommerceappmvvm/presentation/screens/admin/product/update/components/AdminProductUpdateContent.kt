@@ -31,13 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.elionet.ecommerceappmvvm.R
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTextField
 import com.elionet.ecommerceappmvvm.presentation.components.DialogCapturePicture
-import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.create.AdminProductCreateViewModel
 import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.AdminProductUpdateViewModel
 
 @Composable

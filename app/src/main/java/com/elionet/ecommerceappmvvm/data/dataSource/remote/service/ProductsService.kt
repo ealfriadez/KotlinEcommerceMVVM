@@ -5,6 +5,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -30,13 +31,15 @@ interface ProductsService {
     ): Response<Product>
 
     @Multipart
-    @PUT("products/upload/{id}")
+    @PUT("products/{id}")
     suspend fun updateWithImage(
         @Part files: Array<MultipartBody.Part?>,
+        @Path("id") id: String,
         @Part("name") name: RequestBody,
         @Part("description") description: RequestBody,
         @Part("id_category") idCategory: RequestBody,
-        @Part("price") price: RequestBody
+        @Part("price") price: RequestBody,
+        @Part("images_to_update[]") imagesToUpdate: Array<RequestBody?>
     ): Response<Product>
 
     @PUT("products/{id}")
@@ -44,4 +47,9 @@ interface ProductsService {
         @Path("id") id: String,
         @Body product: Product
     ): Response<Product>
+
+    @DELETE("products/{id}")
+    suspend fun delete(
+        @Path("id") id: String
+    ): Response<Unit>
 }

@@ -27,6 +27,9 @@ class AdminProductListViewModel @Inject constructor(
     var productResponse by mutableStateOf<Resource<List<Product>>?>(null)
         private set
 
+    var productDeleteResponse by mutableStateOf<Resource<Unit>?>(null)
+        private set
+
     init {
         getProducts()
     }
@@ -37,5 +40,11 @@ class AdminProductListViewModel @Inject constructor(
             productResponse = it
             Log.d("AdminProductListViewModel", "Data: $productResponse")
         }
+    }
+
+    fun deleteProduct(id: String) = viewModelScope.launch {
+        productDeleteResponse = Resource.Loading
+        val result = productsUseCase.deleteProduct(id)
+        productDeleteResponse = result
     }
 }

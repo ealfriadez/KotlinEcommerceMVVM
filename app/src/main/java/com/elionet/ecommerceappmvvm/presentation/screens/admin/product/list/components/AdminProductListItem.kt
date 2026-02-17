@@ -89,7 +89,7 @@ fun AdminProductListItem(
                 Image(
                     modifier = Modifier
                         .size(35.dp)
-                        .clickable{},
+                        .clickable{vm.deleteProduct(product.id ?: "")},
                     painter = painterResource(id = R.drawable.trash),
                     contentDescription = ""
                 )
