@@ -42,8 +42,10 @@ class AdminProductUpdateViewModel @Inject constructor(
     val resultingActivityHandler = ResultingActivityHandler()
 
     init{
+
+        Log.d("AdminProductUpdateViewModel", "Param: $product")
+
         state = state.copy(
-            //id = product.id ?: "",
             name = product.name,
             description = product.description,
             price = product.price,
@@ -92,12 +94,10 @@ class AdminProductUpdateViewModel @Inject constructor(
             if(imageNumber == 1){
                 file1 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image1 = result.toString())
-                //files.add(file1!!)
             }
             else if(imageNumber == 2){
                 file2 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image2 = result.toString())
-                //files.add(file2!!)
             }
         }
     }

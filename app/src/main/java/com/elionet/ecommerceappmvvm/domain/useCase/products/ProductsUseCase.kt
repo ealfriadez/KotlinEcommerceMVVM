@@ -1,7 +1,7 @@
 package com.elionet.ecommerceappmvvm.domain.useCase.products
 
 data class ProductsUseCase(
-    //val findAll: FindAllProductsUseCase,
+    val findAll: FindAllUseCase,
     val findByCategory: FindByCategoryUseCase,
     val createProduct: CreateProductUseCase,
     val updateProduct: UpdateProductUseCase,

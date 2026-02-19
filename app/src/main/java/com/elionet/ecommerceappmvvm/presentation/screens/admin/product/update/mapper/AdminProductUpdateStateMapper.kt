@@ -5,7 +5,6 @@ import com.elionet.ecommerceappmvvm.presentation.screens.admin.product.update.Ad
 
 fun AdminProductUpdateState.toProduct(): Product{
     return Product(
-        id = id,
         name = name,
         description = description,
         idCategory = idCategory,

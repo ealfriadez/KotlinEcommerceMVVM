@@ -5,6 +5,7 @@ import com.elionet.ecommerceappmvvm.data.repository.AuthRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.UsersRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.local.ProductsLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.CategoriesRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.ProductsRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSource
@@ -42,6 +43,7 @@ object RepositoryModule {
 
     @Provides
     fun provideProductsRepository(
-        productsRemoteDataSource: ProductsRemoteDataSource
-    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource)
+        productsRemoteDataSource: ProductsRemoteDataSource,
+        productsLocalDataSource: ProductsLocalDataSource
+    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource, productsLocalDataSource)
 }

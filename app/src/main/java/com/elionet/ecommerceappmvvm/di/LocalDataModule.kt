@@ -5,7 +5,10 @@ import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSourceImpl
 import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.local.ProductsLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.local.ProductsLocalDataSourceImpl
 import com.elionet.ecommerceappmvvm.data.dataSource.local.dao.CategoriesDao
+import com.elionet.ecommerceappmvvm.data.dataSource.local.dao.ProductsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +25,8 @@ object LocalDataModule {
     @Provides
     fun provideCategoriesLocalDataSource(categoriesDao: CategoriesDao): CategoriesLocalDataSource =
         CategoriesLocalDataSourceImpl(categoriesDao)
+
+    @Provides
+    fun provideProductsLocalDataSource(productsDao: ProductsDao): ProductsLocalDataSource =
+        ProductsLocalDataSourceImpl(productsDao)
 }

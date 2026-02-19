@@ -1,5 +1,6 @@
 package com.elionet.ecommerceappmvvm.presentation.screens.client.category.list.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.elionet.ecommerceappmvvm.domain.model.Category
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ClientCategoryScreen
 
 @Composable
 fun ClientCategoryListItem(
@@ -25,7 +27,9 @@ fun ClientCategoryListItem(
         category: Category
 ) {
     Card(
-        modifier = Modifier.padding(bottom = 15.dp),
+        modifier = Modifier
+            .padding(bottom = 15.dp)
+            .clickable{ navController.navigate(route = ClientCategoryScreen.ProductList.passCategory(category.toJson())) },
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         shape = RoundedCornerShape(size = 20.dp)
     ) {
