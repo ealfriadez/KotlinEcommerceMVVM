@@ -89,6 +89,9 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.5.0")
     implementation("androidx.room:room-ktx:2.5.0")
 
+    //CARRUSEL DE IMAGENES
+    implementation("androidx.compose.foundation:foundation:1.6.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

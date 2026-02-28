@@ -27,6 +27,7 @@ retrofit = "2.9.0"
 composeMaterial = "1.5.6"
 
 [libraries]
+accompanist-pager-indicators-x-x2-x-rc = { module = "com.google.accompanist-pager-indicators:0.22.0-rc" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
@@ -58,6 +59,7 @@ moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
 moshi-v1152 = { module = "com.squareup.moshi:moshi", version.ref = "moshiVersion" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+x-x2-x-rc = { module = "com.google.accompanist-pager:0.22.0-rc" }
 
 
 [plugins]

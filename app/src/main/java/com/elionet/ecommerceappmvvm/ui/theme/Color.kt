@@ -14,4 +14,6 @@ val DarkPrimaryColor = Color(0xFF0097A7)
 val AccentColor = Color(0xFFFF9800)
 val LightPrimaryColor = Color(0xFFB2EBF2)
 
-val Gray200 = Color(0xFFC2C4C4)
+val Gray100 = Color(0xFFF0F0F0)
+val Gray200 = Color(0xFFDBDBDB)
+val Gray700 = Color(0xFF272727)
