@@ -23,6 +23,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Scale
 import com.elionet.ecommerceappmvvm.R
+import com.elionet.ecommerceappmvvm.ui.theme.Gray100
 
 @Composable
 fun SliderView(
@@ -36,7 +37,7 @@ fun SliderView(
         modifier = Modifier
             .height(400.dp)
             .fillMaxWidth()
-            .background(color = Color.White)
+            .background(color = Gray100)
     ) { page ->
         // 3. Ahora 'page' nunca será mayor que el tamaño de la lista
         val painter = rememberAsyncImagePainter(
