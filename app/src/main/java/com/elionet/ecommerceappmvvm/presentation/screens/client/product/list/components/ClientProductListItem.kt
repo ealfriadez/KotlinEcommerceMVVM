@@ -1,5 +1,6 @@
 package com.elionet.ecommerceappmvvm.presentation.screens.client.product.list.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +21,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.elionet.ecommerceappmvvm.domain.model.Product
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ClientCategoryScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.client.product.list.ClientProductListViewModel
 
 @Composable
@@ -32,6 +34,9 @@ fun ClientProductListItem(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
             .height(80.dp)
+            .clickable {
+                navController.navigate(route = ClientCategoryScreen.ProductDetail.passProduct(product.toJson()))
+            }
     ) {
         Row(){
             Column(

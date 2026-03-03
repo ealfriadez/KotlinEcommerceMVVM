@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.elionet.ecommerceappmvvm.data.dataSource.local.dao.CategoriesDao
 import com.elionet.ecommerceappmvvm.data.dataSource.local.dao.ProductsDao
+import com.elionet.ecommerceappmvvm.data.dataSource.local.dao.ShoppingBagDao
 import com.elionet.ecommerceappmvvm.data.dataSource.local.db.EcomerceDB
 import dagger.Module
 import dagger.Provides
@@ -34,4 +35,7 @@ object DataBaseModule {
     @Singleton
     fun provideProductsDao(db: EcomerceDB): ProductsDao = db.productsDao()
 
+    @Provides
+    @Singleton
+    fun provideShopingBagDao(db: EcomerceDB): ShoppingBagDao = db.shoppingBagDao()
 }

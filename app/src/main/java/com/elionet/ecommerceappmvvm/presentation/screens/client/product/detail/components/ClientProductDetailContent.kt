@@ -1,6 +1,7 @@
 package com.elionet.ecommerceappmvvm.presentation.screens.client.product.detail.components
 
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -109,11 +110,11 @@ fun ClientProductDetailContent(
                     fontSize = 16.sp
                 )
                 Text(
-                    text = "Cantidad: 0",
+                    text = "Cantidad: ${vm.quantity}",
                     fontSize = 15.sp
                 )
                 Text(
-                    text = "Prefio c/u: 0",
+                    text = "Precio c/u: ${vm.price}",
                     fontSize = 15.sp
                 )
                 Spacer(modifier = Modifier.weight(1f))
@@ -135,18 +136,20 @@ fun ClientProductDetailContent(
                             verticalAlignment = Alignment.CenterVertically
                         ){
                             Text(
+                                modifier = Modifier.clickable{ vm.remove() },
                                 text = "-",
                                 fontSize = 20.sp,
                                 color = Color.White,
                                 fontWeight = FontWeight.Bold
                             )
                             Text(
-                                text = "0",
+                                text = vm.quantity.toString(),
                                 fontSize = 18.sp,
                                 color = Color.White,
                                 fontWeight = FontWeight.Medium
                             )
                             Text(
+                                modifier = Modifier.clickable{ vm.add() },
                                 text = "+",
                                 fontSize = 20.sp,
                                 color = Color.White,
@@ -157,7 +160,7 @@ fun ClientProductDetailContent(
                     DefaultButton(
                         modifier = Modifier.width(170.dp),
                         text = "AGREGAR",
-                        onClick = {}
+                        onClick = { vm.saveItem() }
                     )
                 }
             }

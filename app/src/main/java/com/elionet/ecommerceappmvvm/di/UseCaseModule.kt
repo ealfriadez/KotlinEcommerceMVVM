@@ -3,6 +3,7 @@ package com.elionet.ecommerceappmvvm.di
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
 import com.elionet.ecommerceappmvvm.domain.repository.ProductsRepository
+import com.elionet.ecommerceappmvvm.domain.repository.ShoppingBagRepository
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
@@ -24,6 +25,11 @@ import com.elionet.ecommerceappmvvm.domain.useCase.products.FindByCategoryUseCas
 import com.elionet.ecommerceappmvvm.domain.useCase.products.ProductsUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.products.UpdateProductUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.products.UpdateProductWithImageUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.shopping_bag.AddUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.shopping_bag.DeleteUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.shopping_bag.FindAllShoppingBagUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.shopping_bag.FindByIdShoppingBagUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.shopping_bag.ShoppingBagUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserWithImageCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
@@ -69,5 +75,13 @@ object UseCaseModule {
         updateProduct = UpdateProductUseCase(productsRepository),
         updateProductWithImageUseCase = UpdateProductWithImageUseCase(productsRepository),
         deleteProduct = DeleteProductUseCase(productsRepository)
+    )
+
+    @Provides
+    fun provideShoppingBagUseCase(shoppingBagRepository: ShoppingBagRepository) = ShoppingBagUseCase(
+        add = AddUseCase(shoppingBagRepository),
+        delete = DeleteUseCase(shoppingBagRepository),
+        findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
+        findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
     )
 }

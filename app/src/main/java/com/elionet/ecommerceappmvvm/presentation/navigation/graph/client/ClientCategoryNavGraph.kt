@@ -8,6 +8,8 @@ import androidx.navigation.navArgument
 import androidx.navigation.navigation
 import com.elionet.ecommerceappmvvm.presentation.navigation.Graph
 import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ClientCategoryScreen
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ClientProductScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.client.product.detail.ClientProductDetailScreen
 import com.elionet.ecommerceappmvvm.presentation.screens.client.product.listByCategory.ClientProductByCategoryListScreen
 
 fun NavGraphBuilder.ClientCategoryNavGraph(navController: NavHostController){
@@ -23,6 +25,15 @@ fun NavGraphBuilder.ClientCategoryNavGraph(navController: NavHostController){
             it.arguments?.getString("category").let {
                 ClientProductByCategoryListScreen(navController, it!!)
             }
+        }
+    }
+
+    composable(route = ClientCategoryScreen.ProductDetail.route,
+        arguments = listOf(navArgument("product"){
+            type = NavType.StringType
+        })){
+        it.arguments?.getString("product").let {
+            ClientProductDetailScreen(navController, it!!)
         }
     }
 }
