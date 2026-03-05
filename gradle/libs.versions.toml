@@ -5,6 +5,7 @@ coilCompose = "2.7.0"
 commonsIo = "2.21.0"
 converterGson = "2.9.0"
 datastorePreferences = "1.2.0"
+foundation = "1.6.0"
 gson = "2.9.0"
 hiltAndroid = "2.57.2"
 hiltAndroidCompiler = "2.57.1"
@@ -25,16 +26,23 @@ moshiVersion = "1.15.2"
 navigationCompose = "2.9.6"
 retrofit = "2.9.0"
 composeMaterial = "1.5.6"
+roomCompiler = "2.5.0"
+roomKtx = "2.5.0"
+roomRuntime = "2.5.0"
 
 [libraries]
 accompanist-pager-indicators-x-x2-x-rc = { module = "com.google.accompanist-pager-indicators:0.22.0-rc" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-material3 = { module = "androidx.compose.material3:material3" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 commons-io = { module = "commons-io:commons-io", version.ref = "commonsIo" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }

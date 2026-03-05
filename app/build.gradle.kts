@@ -84,13 +84,13 @@ dependencies {
     implementation(libs.commons.io)
 
     //ROOM
-    implementation("androidx.room:room-runtime:2.5.0")
-    ksp("androidx.room:room-compiler:2.5.0")
-    annotationProcessor("androidx.room:room-compiler:2.5.0")
-    implementation("androidx.room:room-ktx:2.5.0")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    annotationProcessor(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
-    //CARRUSEL DE IMAGENES
-    implementation("androidx.compose.foundation:foundation:1.6.0")
+    //CAROUSEL DE IMAGES
+    implementation(libs.androidx.compose.foundation)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
