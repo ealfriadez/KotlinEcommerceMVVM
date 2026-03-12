@@ -17,13 +17,13 @@ import javax.inject.Inject
 @HiltViewModel
 class ClientProductDetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val shoppingBagUseCase: ShoppingBagUseCase
+    //private val shoppingBagUseCase: ShoppingBagUseCase
 ): ViewModel() {
 
     var data = savedStateHandle.get<String>("product")
     var product = Product.fromJson(data!!)
     var productImages = listOf<String>(product.image1 ?: "", product.image2 ?:"")
-
+/*
     var quantity by mutableStateOf(0)
         private set
 
@@ -63,5 +63,5 @@ class ClientProductDetailViewModel @Inject constructor(
             )
             shoppingBagUseCase.add(shoppingBagProduct)
         }
-    }
+    }*/
 }

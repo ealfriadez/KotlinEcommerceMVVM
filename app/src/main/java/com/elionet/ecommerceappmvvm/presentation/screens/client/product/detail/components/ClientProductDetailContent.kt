@@ -45,6 +45,31 @@ fun ClientProductDetailContent(
 ){
     val state = rememberPagerState(initialPage = 0) { vm.productImages.size }
 
+    /*Column(Modifier.padding(paddingValues)) {
+        SliderView(state = state, images = vm.productImages)
+        Spacer(modifier = Modifier.height(4.dp))
+        DotsIndicator(totalDots = vm.productImages.size, selectedIndex = state.currentPage)
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Box(
         Modifier.padding(paddingValues).fillMaxSize()
     ){
@@ -110,11 +135,11 @@ fun ClientProductDetailContent(
                     fontSize = 16.sp
                 )
                 Text(
-                    text = "Cantidad: ${vm.quantity}",
+                    text = "Cantidad:",// ${vm.quantity}",
                     fontSize = 15.sp
                 )
                 Text(
-                    text = "Precio c/u: ${vm.price}",
+                    text = "Precio c/u:",// ${vm.price}",
                     fontSize = 15.sp
                 )
                 Spacer(modifier = Modifier.weight(1f))
