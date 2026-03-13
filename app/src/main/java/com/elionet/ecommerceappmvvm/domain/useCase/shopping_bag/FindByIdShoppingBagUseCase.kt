@@ -2,7 +2,7 @@ package com.elionet.ecommerceappmvvm.domain.useCase.shopping_bag
 
 import com.elionet.ecommerceappmvvm.domain.repository.ShoppingBagRepository
 
-class FindByIdShoppingBagUseCase(private val repositoy: ShoppingBagRepository) {
+class FindByIdShoppingBagUseCase(private val repository: ShoppingBagRepository) {
 
-    //suspend operator fun invoke(id: String) = repositoy.findById(id)
+    suspend operator fun invoke(id: String) = repository.findById(id)
 }

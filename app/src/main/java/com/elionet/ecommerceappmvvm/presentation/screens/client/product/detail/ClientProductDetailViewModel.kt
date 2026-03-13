@@ -47,12 +47,10 @@ class ClientProductDetailViewModel @Inject constructor(
     }
 
    fun getShoppingBagProduct() = viewModelScope.launch {
-       shoppingBagUseCase.findAll().collect() {
-           Log.d("ClientProductDetailViewModel", "Data: $it")
-       }
-        /*val result = shoppingBagUseCase.findById(product.id ?: "")
-        quantity = result.quantity
-        price = product.price * quantity*/
+
+       val result = shoppingBagUseCase.findById(product.id ?: "")
+       quantity = result?.quantity ?: 0
+       price = product.price * quantity
     }
 
     fun saveItem() = viewModelScope.launch {

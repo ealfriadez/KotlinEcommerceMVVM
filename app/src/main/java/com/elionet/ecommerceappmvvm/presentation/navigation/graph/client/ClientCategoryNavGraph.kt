@@ -32,8 +32,8 @@ fun NavGraphBuilder.ClientCategoryNavGraph(navController: NavHostController){
         arguments = listOf(navArgument("product"){
             type = NavType.StringType
         })){
-        it.arguments?.getString("product").let {
-            ClientProductDetailScreen(navController, it!!)
+        it.arguments?.getString("product")?.let {
+            ClientProductDetailScreen(navController, it)
         }
     }
 }
