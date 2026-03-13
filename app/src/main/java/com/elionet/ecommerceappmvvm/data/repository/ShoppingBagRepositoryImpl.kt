@@ -44,6 +44,9 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
     }
 
     override fun findById(id: String): ShoppingBagProduct {
+
+        Log.d("ShoppingBagRepositoryImpl", "findById: $id")
+
         val data = runBlocking(context = Dispatchers.IO) {
             localDataSource.findById(id).toShoppingBagProduct()
         }
