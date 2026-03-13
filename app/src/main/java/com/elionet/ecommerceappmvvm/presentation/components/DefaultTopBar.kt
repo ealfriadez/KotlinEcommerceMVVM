@@ -2,6 +2,7 @@ package com.elionet.ecommerceappmvvm.presentation.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -13,13 +14,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ShoppingBagScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DefaultTopBar(
     title: String,
     upAvailable: Boolean = false,
-    navController: NavHostController? = null
+    navController: NavHostController? = null,
+    enableActions: Boolean = false
 ){
     TopAppBar(
         title = {
@@ -43,8 +46,18 @@ fun DefaultTopBar(
                     )
                 }
             }
+        },
+        actions = {
+            if(enableActions){
+                IconButton(onClick = {navController?.navigate(route = ShoppingBagScreen.ShoppingBag.route)}) {
+                    Icon(
+                        imageVector = Icons.Default.ShoppingCart,
+                        contentDescription = "",
+                        tint = Color.Black
+                    )
+                }
+            }
         }
-
     )
 }
 
