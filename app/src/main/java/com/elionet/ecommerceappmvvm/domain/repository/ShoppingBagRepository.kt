@@ -8,5 +8,4 @@ interface ShoppingBagRepository {
     suspend fun add(product: ShoppingBagProduct)
     suspend fun delete(id: String)
     fun findAll(): Flow<List<ShoppingBagProduct>>
-    fun findById(id: String): ShoppingBagProduct
 }

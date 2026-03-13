@@ -52,6 +52,6 @@ object RepositoryModule {
 
     @Provides
     fun provideShoppingBagRepository(
-        ShoppingBagLocalDataSource: ShoppingBagLocalDataSource
-    ): ShoppingBagRepository = ShoppingBagRepositoryImpl(ShoppingBagLocalDataSource)
+        shoppingBagLocalDataSource: ShoppingBagLocalDataSource
+    ): ShoppingBagRepository = ShoppingBagRepositoryImpl(shoppingBagLocalDataSource)
 }

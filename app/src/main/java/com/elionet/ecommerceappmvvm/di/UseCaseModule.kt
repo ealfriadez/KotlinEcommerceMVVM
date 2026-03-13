@@ -81,7 +81,6 @@ object UseCaseModule {
     fun provideShoppingBagUseCase(shoppingBagRepository: ShoppingBagRepository) = ShoppingBagUseCase(
         add = AddUseCase(shoppingBagRepository),
         delete = DeleteUseCase(shoppingBagRepository),
-        findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
-        findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
+        findAll = FindAllShoppingBagUseCase(shoppingBagRepository)
     )
 }

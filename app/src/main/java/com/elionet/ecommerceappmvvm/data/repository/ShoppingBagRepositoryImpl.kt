@@ -9,6 +9,7 @@ import com.elionet.ecommerceappmvvm.domain.repository.ShoppingBagRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -16,15 +17,16 @@ import kotlinx.coroutines.runBlocking
 class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDataSource): ShoppingBagRepository {
 
     override suspend fun add(product: ShoppingBagProduct) {
-        CoroutineScope(Dispatchers.IO).launch{
+
+        CoroutineScope(Dispatchers.IO).launch {
             val shoppingBag = localDataSource.findById(product.id)
+
             if(shoppingBag == null){
 
                 Log.d("ShoppingBagRepositoryImpl", "Creando datos")
 
                 localDataSource.insert(product.toEntity())
-            }
-            else{
+            }else{
 
                 Log.d("ShoppingBagRepositoryImpl", "Actualizando datos")
 
@@ -41,15 +43,5 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
         localDataSource.findAll().collect(){
             emit(it.map { product -> product.toShoppingBagProduct() })
         }
-    }
-
-    override fun findById(id: String): ShoppingBagProduct {
-
-        Log.d("ShoppingBagRepositoryImpl", "findById: $id")
-
-        val data = runBlocking(context = Dispatchers.IO) {
-            localDataSource.findById(id).toShoppingBagProduct()
-        }
-        return data
     }
 }

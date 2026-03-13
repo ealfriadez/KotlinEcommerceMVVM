@@ -279,20 +279,20 @@ fun ClientProductDetailContent(
                             verticalAlignment = Alignment.CenterVertically
                         ){
                             Text(
-                                modifier = Modifier.clickable{},// vm.remove() },
+                                modifier = Modifier.clickable{ vm.remove() },
                                 text = "-",
                                 fontSize = 20.sp,
                                 color = Color.White,
                                 fontWeight = FontWeight.Bold
                             )
                             Text(
-                                text = "", //vm.quantity.toString(),
+                                text = vm.quantity.toString(),
                                 fontSize = 18.sp,
                                 color = Color.White,
                                 fontWeight = FontWeight.Medium
                             )
                             Text(
-                                modifier = Modifier.clickable{ }, //vm.add() },
+                                modifier = Modifier.clickable{ vm.add() },
                                 text = "+",
                                 fontSize = 20.sp,
                                 color = Color.White,
@@ -303,7 +303,7 @@ fun ClientProductDetailContent(
                     DefaultButton(
                         modifier = Modifier.width(170.dp),
                         text = "AGREGAR",
-                        onClick = { },//vm.saveItem() }
+                        onClick = { vm.saveItem() }
                     )
                 }
 
