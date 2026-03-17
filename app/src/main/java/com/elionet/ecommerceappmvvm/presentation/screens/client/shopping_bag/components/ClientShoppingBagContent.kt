@@ -1,6 +1,8 @@
 package com.elionet.ecommerceappmvvm.presentation.screens.client.shopping_bag.components
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -11,10 +13,13 @@ import com.elionet.ecommerceappmvvm.domain.model.ShoppingBagProduct
 @Composable
 fun ClientShoppingBagContent(
     paddingValues: PaddingValues,
-    shoppingBag: List<ShoppingBagProduct>
+    shoppingBag: MutableList<ShoppingBagProduct>
 ){
+    // Asegúrate de que el contenedor principal use fillMaxSize()
     LazyColumn(
-        modifier = Modifier.padding(paddingValues)
+        modifier = Modifier
+            .padding(paddingValues)
+            .fillMaxSize()
     ) {
         items(
             items = shoppingBag

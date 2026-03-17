@@ -47,8 +47,11 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
 
     override suspend fun findById(id: String): ShoppingBagProduct? {
         val data = runBlocking(context = Dispatchers.IO) {
-            localDataSource.findById(id)?.toShoppingBagProduct()
+            localDataSource.findById(id)
         }
-        return data
+        if (data != null){
+            return data.toShoppingBagProduct()
+        }
+        return null
     }
 }
