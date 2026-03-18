@@ -3,6 +3,7 @@ package com.elionet.ecommerceappmvvm.di
 import android.util.Log
 import com.elionet.ecommerceappmvvm.core.Config
 import com.elionet.ecommerceappmvvm.data.dataSource.local.datastore.AuthDataStore
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AddressService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.CategoriesService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.ProductsService
@@ -69,5 +70,11 @@ object NetwortModule {
     @Singleton
     fun provideProductsService(retrofit: Retrofit): ProductsService {
         return retrofit.create(ProductsService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddressService(retrofit: Retrofit): AddressService {
+        return retrofit.create(AddressService::class.java)
     }
 }

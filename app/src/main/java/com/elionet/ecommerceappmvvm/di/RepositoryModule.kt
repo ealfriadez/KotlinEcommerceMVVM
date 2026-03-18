@@ -7,12 +7,15 @@ import com.elionet.ecommerceappmvvm.data.dataSource.local.AuthLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.local.CategoriesLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.local.ProductsLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.local.ShoppingBagLocalDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.AddressRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.CategoriesRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.ProductsRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.repository.AddressRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.CategoriesRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.ProductsRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.ShoppingBagRepositoryImpl
+import com.elionet.ecommerceappmvvm.domain.repository.AddressRepository
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
 import com.elionet.ecommerceappmvvm.domain.repository.ProductsRepository
@@ -54,4 +57,9 @@ object RepositoryModule {
     fun provideShoppingBagRepository(
         shoppingBagLocalDataSource: ShoppingBagLocalDataSource
     ): ShoppingBagRepository = ShoppingBagRepositoryImpl(shoppingBagLocalDataSource)
+
+    @Provides
+    fun provideAddressBagRepository(
+        addressRemoteDataSource: AddressRemoteDataSource
+    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource)
 }

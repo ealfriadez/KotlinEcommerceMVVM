@@ -1,10 +1,14 @@
 package com.elionet.ecommerceappmvvm.di
 
+import com.elionet.ecommerceappmvvm.domain.repository.AddressRepository
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
 import com.elionet.ecommerceappmvvm.domain.repository.ProductsRepository
 import com.elionet.ecommerceappmvvm.domain.repository.ShoppingBagRepository
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
+import com.elionet.ecommerceappmvvm.domain.useCase.address.AddressUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.address.CreateAddressUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.address.FindByUserAddressUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.AuthUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.GetSessionDataUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.auth.LoginUseCase
@@ -83,5 +87,11 @@ object UseCaseModule {
         delete = DeleteUseCase(shoppingBagRepository),
         findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
         findById = FindByIdShoppingBagUseCase(shoppingBagRepository)
+    )
+
+    @Provides
+    fun provideAddressUseCase(addressRepository: AddressRepository) = AddressUseCase(
+        createAddress = CreateAddressUseCase(addressRepository),
+        findByUserAddress = FindByUserAddressUseCase(addressRepository)
     )
 }
