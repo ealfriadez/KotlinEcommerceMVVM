@@ -23,9 +23,9 @@ class ClientShoppingBagViewModel @Inject constructor(
     var total by mutableStateOf(0.0)
         private set
 
-    init {
+    /*init {
         getShoppingBag()
-    }
+    }*/
 
     fun getTotal(){
         total = 0.0

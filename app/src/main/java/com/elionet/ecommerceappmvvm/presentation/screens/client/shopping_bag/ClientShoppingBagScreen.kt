@@ -24,6 +24,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultButton
 import com.elionet.ecommerceappmvvm.presentation.components.DefaultTopBar
+import com.elionet.ecommerceappmvvm.presentation.navigation.screen.client.ShoppingBagScreen
+import com.elionet.ecommerceappmvvm.presentation.screens.client.shopping_bag.components.ClientShoppingBagBottomBar
 import com.elionet.ecommerceappmvvm.presentation.screens.client.shopping_bag.components.ClientShoppingBagContent
 import com.elionet.ecommerceappmvvm.ui.theme.Gray100
 import com.elionet.ecommerceappmvvm.ui.theme.Gray700
@@ -33,6 +35,9 @@ fun ClientShoppingBagScreen(
     navController: NavHostController,
     vm: ClientShoppingBagViewModel = hiltViewModel()
 ){
+
+    vm.getShoppingBag()
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -43,35 +48,7 @@ fun ClientShoppingBagScreen(
             )
         },
         bottomBar = {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = Gray100),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                Column(
-                    modifier = Modifier.padding(vertical = 30.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "TOTAL",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 17.sp
-                    )
-                    Text(
-                        text = "S/ " + "%.2f".format(vm.total),
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 17.sp
-                    )
-                }
-                DefaultButton(
-                    modifier = Modifier
-                        .padding(vertical = 20.dp),
-                    text = "Confirmar Orden",
-                    onClick = { }
-                )
-            }
+            ClientShoppingBagBottomBar(navController)
         }
     )
      { paddingValues ->
