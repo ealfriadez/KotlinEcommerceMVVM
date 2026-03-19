@@ -14,7 +14,7 @@ fun AdminProductCreateScreen(
     navController: NavHostController,
     categoryParam: String
 ){
-    Log.d("AdminProductCreateScreen", "Category: ${categoryParam}")
+    Log.d("AdminProductCreateScreen", "Category: $categoryParam")
 
     Scaffold(
         topBar = {

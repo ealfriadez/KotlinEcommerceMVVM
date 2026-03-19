@@ -4,12 +4,13 @@ import com.elionet.ecommerceappmvvm.domain.model.Address
 import com.elionet.ecommerceappmvvm.domain.util.Resource
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface AddressService {
 
-    @POST("address/user/{id_user}")
+    @GET("address/user/{id_user}")
     suspend fun findByUser(@Path("id_user") idUser: String): Response<List<Address>>
 
     @POST("address")

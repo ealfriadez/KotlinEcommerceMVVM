@@ -1,5 +1,6 @@
 package com.elionet.ecommerceappmvvm.di
 
+import com.elionet.ecommerceappmvvm.data.dataSource.local.AddressLocalDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.AuthRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.repository.AuthRepositoryImpl
 import com.elionet.ecommerceappmvvm.data.repository.UsersRepositoryImpl
@@ -60,6 +61,7 @@ object RepositoryModule {
 
     @Provides
     fun provideAddressBagRepository(
-        addressRemoteDataSource: AddressRemoteDataSource
-    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource)
+        addressRemoteDataSource: AddressRemoteDataSource,
+        addressLocalDataSource: AddressLocalDataSource
+    ): AddressRepository = AddressRepositoryImpl(addressRemoteDataSource, addressLocalDataSource)
 }
