@@ -6,6 +6,9 @@ import com.elionet.ecommerceappmvvm.data.dataSource.local.datastore.AuthDataStor
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AddressService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.CategoriesService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.MercadoPagoCheckoutService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.MercadoPagoService
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.OrdersService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.ProductsService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.UsersService
 import dagger.Module
@@ -73,31 +76,49 @@ object NetwortModule {
 
     @Provides
     @Singleton
-    fun provideAuthService(retrofit: Retrofit): AuthService {
+    fun provideAuthService(@DefaultRetrofit retrofit: Retrofit): AuthService {
         return retrofit.create(AuthService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideUsersService(retrofit: Retrofit): UsersService {
+    fun provideUsersService(@DefaultRetrofit retrofit: Retrofit): UsersService {
         return retrofit.create(UsersService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideCategoriesService(retrofit: Retrofit): CategoriesService {
+    fun provideCategoriesService(@DefaultRetrofit retrofit: Retrofit): CategoriesService {
         return retrofit.create(CategoriesService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideProductsService(retrofit: Retrofit): ProductsService {
+    fun provideProductsService(@DefaultRetrofit retrofit: Retrofit): ProductsService {
         return retrofit.create(ProductsService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideAddressService(retrofit: Retrofit): AddressService {
+    fun provideAddressService(@DefaultRetrofit retrofit: Retrofit): AddressService {
         return retrofit.create(AddressService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMercadoPagoService(@DefaultRetrofit retrofit: Retrofit):  MercadoPagoService{
+        return retrofit.create(MercadoPagoService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideOrdersService(@DefaultRetrofit retrofit: Retrofit):  OrdersService{
+        return retrofit.create(OrdersService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMercadoPagoCheckoutService(@NgrokRetrofit retrofit: Retrofit):  OrdersService{
+        return retrofit.create(OrdersService::class.java)
     }
 }
