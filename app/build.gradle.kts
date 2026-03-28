@@ -92,6 +92,10 @@ dependencies {
     //CAROUSEL DE IMAGES
     implementation(libs.androidx.compose.foundation)
 
+    implementation(libs.androidx.compose.foundation.v1105)
+    implementation(libs.androidx.browser)
+    implementation(libs.logging.interceptor.v4120)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

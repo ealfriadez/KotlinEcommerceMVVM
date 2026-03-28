@@ -17,7 +17,17 @@ import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
+
+@Qualifier
+@Retention
+annotation class DefaultRetrofit
+
+@Qualifier
+@Retention
+annotation class NgrokRetrofit
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -39,10 +49,23 @@ object NetwortModule {
 
     @Provides
     @Singleton
+    @DefaultRetrofit
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {   //POSTMAN - THUNDER CLIENT - RETROFIT
         return Retrofit
             .Builder()
             .baseUrl(Config.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    @NgrokRetrofit
+    fun provideRetrofitNgrok(okHttpClient: OkHttpClient): Retrofit {   //POSTMAN - THUNDER CLIENT - RETROFIT
+        return Retrofit
+            .Builder()
+            .baseUrl(Config.NGROK_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

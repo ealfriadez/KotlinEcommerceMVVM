@@ -1,6 +1,6 @@
-package com.elionet.ecommerceappmvvm.data.dataSource.remote.service
+package com.elionet.ecommerceappmvvm.data.dataSource.remote
 
-import com.elionet.ecommerceappmvvm.data.dataSource.remote.AddressRemoteDataSource
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AddressService
 import com.elionet.ecommerceappmvvm.domain.model.Address
 import retrofit2.Response
 

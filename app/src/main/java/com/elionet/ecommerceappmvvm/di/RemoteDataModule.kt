@@ -9,7 +9,7 @@ import com.elionet.ecommerceappmvvm.data.dataSource.remote.CategoriesRemoteDataS
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.ProductsRemoteDataSource
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.ProductsRemoteDataSourceImpl
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.UsersRemoteDataSourceImpl
-import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AddressRemoteDataSourceImpl
+import com.elionet.ecommerceappmvvm.data.dataSource.remote.AddressRemoteDataSourceImpl
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AddressService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.AuthService
 import com.elionet.ecommerceappmvvm.data.dataSource.remote.service.CategoriesService
