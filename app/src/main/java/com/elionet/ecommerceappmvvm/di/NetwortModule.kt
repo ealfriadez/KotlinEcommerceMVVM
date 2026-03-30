@@ -118,7 +118,7 @@ object NetwortModule {
 
     @Provides
     @Singleton
-    fun provideMercadoPagoCheckoutService(@NgrokRetrofit retrofit: Retrofit):  OrdersService{
-        return retrofit.create(OrdersService::class.java)
+    fun provideMercadoPagoCheckoutService(@NgrokRetrofit retrofit: Retrofit):  MercadoPagoCheckoutService{
+        return retrofit.create(MercadoPagoCheckoutService::class.java)
     }
 }

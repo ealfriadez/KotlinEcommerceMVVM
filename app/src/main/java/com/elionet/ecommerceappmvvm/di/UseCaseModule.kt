@@ -3,6 +3,9 @@ package com.elionet.ecommerceappmvvm.di
 import com.elionet.ecommerceappmvvm.domain.repository.AddressRepository
 import com.elionet.ecommerceappmvvm.domain.repository.AuthRepository
 import com.elionet.ecommerceappmvvm.domain.repository.CategoriesRepository
+import com.elionet.ecommerceappmvvm.domain.repository.MercadoPagoCheckoutRepository
+import com.elionet.ecommerceappmvvm.domain.repository.MercadoPagoRepository
+import com.elionet.ecommerceappmvvm.domain.repository.OrdersRepository
 import com.elionet.ecommerceappmvvm.domain.repository.ProductsRepository
 import com.elionet.ecommerceappmvvm.domain.repository.ShoppingBagRepository
 import com.elionet.ecommerceappmvvm.domain.repository.UsersRepository
@@ -22,6 +25,14 @@ import com.elionet.ecommerceappmvvm.domain.useCase.categories.DeleteCategoryUseC
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.GetCategoriesUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.UpdateCategoryUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.categories.UpdateCategoryWithImageUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.mercado_pago.CreateCardTokenUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.mercado_pago.CreatePaymentUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.mercado_pago.GetIdentificationTypeUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.mercado_pago.GetInstallmentsUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.mercado_pago.MercadoPagoUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.mercado_pago_checkout.CreateCheckoutPreferenceUseCase
+import com.elionet.ecommerceappmvvm.domain.useCase.mercado_pago_checkout.MercadoPagoCheckoutUseCases
+import com.elionet.ecommerceappmvvm.domain.useCase.orders.OrdersUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.products.CreateProductUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.products.DeleteProductUseCase
 import com.elionet.ecommerceappmvvm.domain.useCase.products.FindAllUseCase
@@ -37,6 +48,9 @@ import com.elionet.ecommerceappmvvm.domain.useCase.shopping_bag.ShoppingBagUseCa
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserUserCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UpdateUserWithImageCase
 import com.elionet.ecommerceappmvvm.domain.useCase.users.UsersUseCase
+import com.optic.ecommerceappmvvm.domain.useCase.orders.FindAllOrdersUseCase
+import com.optic.ecommerceappmvvm.domain.useCase.orders.FindByClientOrdersUseCase
+import com.optic.ecommerceappmvvm.domain.useCase.orders.UpdateStatusOrdersUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -94,4 +108,28 @@ object UseCaseModule {
         createAddress = CreateAddressUseCase(addressRepository),
         findByUserAddress = FindByUserAddressUseCase(addressRepository)
     )
+
+
+    @Provides
+    fun provideMercadoPagoUseCase(mercadoPagoRepository: MercadoPagoRepository) =
+        MercadoPagoUseCase(
+            getIdentificationType = GetIdentificationTypeUseCase(mercadoPagoRepository),
+            getInstallments = GetInstallmentsUseCase(mercadoPagoRepository),
+            createCardToken = CreateCardTokenUseCase(mercadoPagoRepository),
+            createPayment = CreatePaymentUseCase(mercadoPagoRepository),
+        )
+
+    @Provides
+    fun provideOrdersUseCase(ordersRepository: OrdersRepository) = OrdersUseCase(
+        findAllOrders = FindAllOrdersUseCase(ordersRepository),
+        findByClientOrders = FindByClientOrdersUseCase(ordersRepository),
+        updateStatusOrders = UpdateStatusOrdersUseCase(ordersRepository)
+    )
+
+    @Provides
+    fun provideMercadoPagoCheckoutUseCase(mercadoPagoCheckoutRepository: MercadoPagoCheckoutRepository) =
+        MercadoPagoCheckoutUseCases(
+            createCheckoutPreference = CreateCheckoutPreferenceUseCase(mercadoPagoCheckoutRepository)
+        )
+
 }
